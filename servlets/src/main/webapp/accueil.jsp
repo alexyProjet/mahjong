@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="menu.css" >
     </head>
     <body>
-        <a href="displayParameters.html"><i id="parametersIcon" class="fas fa-cog fa-5x"></i></a>
+        <a href="/displayParameters"><i id="parametersIcon" class="fas fa-cog fa-5x"></i></a>
         <h1 id="title">Mahjong Online</h1>
         <div id="menu">
             <a id="createLobbyButton" href="/createLobby"><button class="menuButton">Create Lobby</button></a>

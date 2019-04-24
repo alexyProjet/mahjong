@@ -32,6 +32,14 @@
         <servlet-name>createPlayer</servlet-name>
         <servlet-class>fr.univubs.inf1603.mahjong.interfaces.web.servlets.createPlayer</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>displayParameters</servlet-name>
+        <servlet-class>fr.univubs.inf1603.mahjong.interfaces.web.servlets.displayParameters</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>credits</servlet-name>
+        <servlet-class>fr.univubs.inf1603.mahjong.interfaces.web.servlets.credits</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>accueil</servlet-name>
         <url-pattern>/accueil</url-pattern>
@@ -63,6 +71,14 @@
     <servlet-mapping>
         <servlet-name>createPlayer</servlet-name>
         <url-pattern>/createPlayer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>displayParameters</servlet-name>
+        <url-pattern>/displayParameters</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>credits</servlet-name>
+        <url-pattern>/credits</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

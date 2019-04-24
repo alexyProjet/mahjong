@@ -61,6 +61,8 @@
     </build>
     <modules>
         <module>servlets</module>
+        <module>controllertest</module>
+        <module>embedtomcat</module>
     </modules>
     <dependencies>
         <!-- Utilisation de Junit uniquement pour les tests -->

@@ -42,15 +42,15 @@
 
 
                 function updateWall() {
-                    let elems = $('.tileWall,.rotateWall');
-                    for (elem of elems) {
-                        if ($(elem).hasClass('double tile'))
-                            $(elem).html();
-                        else if ($(elem).hasClass('single tile'))
-                            $(elem).html();
-                    }
+                     let elems = $('.tileWall,.rotateWall');
+                for (elem of elems) {
+                    if ($(elem).hasClass('double tile'))
+                        $(elem).attr("src", "./tilesSVG/XX2.svg");
+                    else if ($(elem).hasClass('single tile'))
+                        $(elem).attr("src", "./tilesSVG/XX.svg");
                 }
-                ;
+            };
+
 
                 updateWall();
 
@@ -79,8 +79,9 @@
                 });
             });
         </script>
-        <a href="displayParameters.html"><i id="parametersIcon" class="fas fa-cog fa-5x"></i></a>
-        <a href="menu.html"><i id="homeIcon" class="fas fa-home fa-5x"></i></a>
+               <%@ include file="buttons.jsp" %>
+
+        <a href="greenbook_en.pdf" target="_blank"><i id="reminderIcon" class="fas fa-info fa-5x"></i></a>
 
         <div id="topPlayer">
             <div id="topHand" class="hand">
