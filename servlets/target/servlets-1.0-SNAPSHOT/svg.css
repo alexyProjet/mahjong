@@ -1,0 +1,76 @@
+.tilePlayer {
+	width: 4vw;
+	height: 10vh;
+}
+
+.tileMeld{
+	width: 2vw;
+	height: 4.5vh;
+}
+
+.tileHand{
+	width: 2vw;
+	height: 4.5vh;
+}
+
+.tileDiscard {
+    width: 1.8vw;
+    height: 5vh;
+
+}
+
+.tileWall{
+	width: 1.5vw;
+	height: 2.5vh;
+}
+
+
+.rotateHand {
+    width: 2vw;
+    height: 4.5vh;
+    transform: rotate(-90deg);
+}
+
+.rotateMeld{
+	width: 1.8vw;
+    height: 5vh;
+    transform: rotate(-90deg);
+}
+
+.rotateDiscard {
+    width: 2vw;
+    height: 6vh;
+    transform: rotate(-90deg);
+}
+
+.rotateWall {
+    width: 1.5vw;
+    height: 2.5vh;
+    transform: rotate(-90deg);
+}
+.rotateWall2 {
+    width: 5vw;
+    height: 4.5vh;
+    transform: rotate(-90deg);
+}
+
+
+#zoomWindow {
+    position: fixed;
+    background-color:rgba(255, 255, 255, 0.25);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    opacity: 1;
+}
+
+#zoomTile{
+	position: absolute;
+	top: 50vh;
+	left: 50vw;
+    transform:translate(-50%, -50%);
+    height: 30vh;
+    width: 10vw;
+}
