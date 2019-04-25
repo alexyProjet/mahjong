@@ -1,4 +1,4 @@
-# mahjong
+# Mahjong
 
 ## Clonage du git en local
 #### - se positionner à l'endroit où cloner le projet
