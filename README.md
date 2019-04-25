@@ -8,7 +8,7 @@
     -Windows -> .exe
     -Linux -> .zip
       -Extraire à un endroit sur votre ordi
-      -Donner les droits sur tous les fichier (sudo chmod 754 *)
+      -Donner les droits sur tous les fichiers (sudo chmod 754 *)
   
 #####   -Dans Netbeans menu tools > servers > add servers > Apache Tomcat
     -Donner le chemin vers le Tomcat téléchargé précédement (ex : apache-tomcat-8.0.27)
