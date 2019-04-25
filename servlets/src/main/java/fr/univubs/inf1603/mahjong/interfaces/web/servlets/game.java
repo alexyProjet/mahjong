@@ -67,7 +67,7 @@ public class game extends HttpServlet {
 
             //BottomHand
             request.setAttribute("bottomHandTiles", playerStartingHand);
-            response.setIntHeader("Refresh", 2);
+            //response.setIntHeader("Refresh", 2);
 
             
 

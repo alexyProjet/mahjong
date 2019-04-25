@@ -22,9 +22,13 @@
             <a id="launchTutoButton" href="/game?tuto=true&playerName="><button class="menuButton">Tutorial</button></a>
             <a id="creditsButton" href="/credits"><button class="menuButton">Credits</button></a>
         </div>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script>
             (function(){
                 document.getElementById("launchTutoButton").href+=localStorage.getItem("playerName");
+                 $('#parametersIcon').on('click',function(){
+                    localStorage.setItem('restoreURL', $(location).attr('href'));
+                 });
             })();
             
             if (localStorage.getItem("playerName") == null) {

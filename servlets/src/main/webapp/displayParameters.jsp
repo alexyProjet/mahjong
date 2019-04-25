@@ -10,21 +10,32 @@
 <head>
 	<title>Display Parameters Mahjong</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
 	<a href=""><i id="backIcon" class="fas fa-arrow-left fa-5x"></i></a>
 	<h1 id="title">Display Parameters</h1>
 	<div id="displayParameters">
-		<!-- <div id="language" class="block">
+		<div id="language" class="block">
 			<label class="parametersLabel">Language</label>
 			<select class="parametersButton" placeholder="Language">
-				<option>English</option>
 				<option>French</option>
 			</select>
-		</div> -->
-
+		</div>
+                
+                
+                <h3>Music</h3>
+                <div id="music">
+                    <div id="music-handle" class="ui-slider-handle"></div>
+                </div>
+                <h3>Sound</h3>
+                <div id="sound">
+                    <div id="sound-handle" class="ui-slider-handle"></div>
+                </div>
+                
 		
 		<div id="saveBlock">
 			<button class="parametersButton" onclick="Swal.fire({ type: 'success',title: 'Parameters saved',showConfirmButton: false,timer: 1500})">Save</button>
@@ -82,6 +93,7 @@ a{
 
 #saveBlock{
 	text-align: center;
+        margin-top: 5vh;
 }
     
     
@@ -92,5 +104,30 @@ a{
     $(function(){
        if (typeof localStorage.getItem('restoreURL') !== 'undefined' && localStorage.getItem('restoreURL') !== null)
             $('a').attr('href',localStorage.getItem('restoreURL'));
+        
+        
+        var handle = $("#music-handle");
+                $("#music").slider({
+                    min: 0,
+                    max: 100,
+                    create: function () {
+                        handle.text($(this).slider("value"));
+                    },
+                    slide: function (event, ui) {
+                        handle.text(ui.value);
+                    }
+                });
+
+         var handlee = $("#sound-handle");
+                $("#sound").slider({
+                    min: 0,
+                    max: 100,
+                    create: function () {
+                        handlee.text($(this).slider("value"));
+                    },
+                    slide: function (event, ui) {
+                        handlee.text(ui.value);
+                    }
+                });
     });
 </script>
