@@ -1,4 +1,4 @@
-# mahjong
+# Mahjong
 
 ### **Aide pour utiliser git : [GITHUB.md](/GITHUB.md "GITHUB.md")**
 
