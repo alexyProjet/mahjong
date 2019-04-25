@@ -11,33 +11,21 @@
 	<title>Display Parameters Mahjong</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 </head>
 <body>
-	<a href="/accueil"><i id="backIcon" class="fas fa-arrow-left fa-5x"></i></a>
+	<a href=""><i id="backIcon" class="fas fa-arrow-left fa-5x"></i></a>
 	<h1 id="title">Display Parameters</h1>
 	<div id="displayParameters">
-		<div id="language" class="block">
+		<!-- <div id="language" class="block">
 			<label class="parametersLabel">Language</label>
 			<select class="parametersButton" placeholder="Language">
 				<option>English</option>
 				<option>French</option>
 			</select>
-		</div>
+		</div> -->
 
-		<div id="boardSkin" class="block">
-			<label class="parametersLabel">Board Skin</label>
-			<select class="parametersButton" placeholder="Board Skin">
-				<option>Classic</option>
-				<option>...</option>
-			</select>
-		</div>
-		<div id="tilesSkin" class="block">
-			<label class="parametersLabel">Tiles Skin</label>
-			<select class="parametersButton" placeholder="Tiles Skin">
-				<option>Classic</option>
-				<option>...</option>
-			</select>
-		</div>
+		
 		<div id="saveBlock">
 			<button class="parametersButton" onclick="Swal.fire({ type: 'success',title: 'Parameters saved',showConfirmButton: false,timer: 1500})">Save</button>
 		</div>
@@ -99,3 +87,10 @@ a{
     
     
 </style>
+<script>
+    
+    $(function(){
+       if (typeof localStorage.getItem('restoreURL') !== 'undefined' && localStorage.getItem('restoreURL') !== null)
+            $('a').attr('href',localStorage.getItem('restoreURL'));
+    });
+</script>

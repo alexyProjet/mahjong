@@ -2,7 +2,9 @@
 /home/florent/NetBeansProjects/mahjong/servlets/src/main/java/fr/univubs/inf1603/mahjong/interfaces/web/servlets/lobby.java
 /home/florent/NetBeansProjects/mahjong/servlets/src/main/java/fr/univubs/inf1603/mahjong/interfaces/web/servlets/joinLobby.java
 /home/florent/NetBeansProjects/mahjong/servlets/src/main/java/fr/univubs/inf1603/mahjong/interfaces/web/servlets/createPlayer.java
+/home/florent/NetBeansProjects/mahjong/servlets/src/main/java/fr/univubs/inf1603/mahjong/interfaces/web/servlets/displayParameters.java
 /home/florent/NetBeansProjects/mahjong/servlets/src/main/java/fr/univubs/inf1603/mahjong/interfaces/web/servlets/tutorial.java
 /home/florent/NetBeansProjects/mahjong/servlets/src/main/java/fr/univubs/inf1603/mahjong/interfaces/web/servlets/joinPrivateLobby.java
 /home/florent/NetBeansProjects/mahjong/servlets/src/main/java/fr/univubs/inf1603/mahjong/interfaces/web/servlets/createGame.java
 /home/florent/NetBeansProjects/mahjong/servlets/src/main/java/fr/univubs/inf1603/mahjong/interfaces/web/servlets/game.java
+/home/florent/NetBeansProjects/mahjong/servlets/src/main/java/fr/univubs/inf1603/mahjong/interfaces/web/servlets/credits.java
