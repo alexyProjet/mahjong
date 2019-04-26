@@ -45,9 +45,9 @@
                      let elems = $('.tileWall,.rotateWall');
                 for (elem of elems) {
                     if ($(elem).hasClass('double tile'))
-                        $(elem).attr("src", "./tilesSVG/XX2.svg");
-                    else if ($(elem).hasClass('single tile'))
                         $(elem).attr("src", "./tilesSVG/XX.svg");
+                    else if ($(elem).hasClass('single tile'))
+                        $(elem).attr("src", "./tilesSVG/XX2.svg");
                 }
             };
 
