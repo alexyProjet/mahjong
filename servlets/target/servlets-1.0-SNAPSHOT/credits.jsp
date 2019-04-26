@@ -17,65 +17,39 @@
 	<%@ include file="buttons.jsp" %>
 	<h1 id="title">Credits</h1>
 	<div id="authors">
-
-		<div class="authorName">ALLON</div>
-		<div class="authorName">LEVY</div>
-		<div class="authorName">BACARD</div>
-		<div class="authorName">HUGO</div>
-		<div class="authorName">BAKER</div>
-		<div class="authorName">MATTHEW</div>
-		<div class="authorName">BALWE</div>
-		<div class="authorName">CHETAN</div>
-		<div class="authorName">BELAIR</div>
-		<div class="authorName">LUC</div>
-		<div class="authorName">BERKOVICH</div>
-		<div class="authorName">VLADIMIR</div>
-		<div class="authorName">BERTRAND</div>
-		<div class="authorName">BENOIT</div>
-		<div class="authorName">BHOWIK</div>
-		<div class="authorName">PRASENJIT</div>
-		<div class="authorName">BLOSSIER</div>
-		<div class="authorName">THOMAS</div>
-		<div class="authorName">BOUAYAD</div>
-		<div class="authorName">ALEXANDRE</div>
-		<div class="authorName">BOUSCAREN</div>
-		<div class="authorName">BRASCA</div>
-		<div class="authorName">RICCARDO</div>
-		<div class="authorName">BRIEND</div>
-		<div class="authorName">JEA</div>
-		<div class="authorName">BRUGALLE</div>
-		<div class="authorName">ERWAN</div>
-		<div class="authorName">BYRON</div>
-		<div class="authorName">DYLAN</div>
-		<div class="authorName">BYSZEWSKI</div>
-		<div class="authorName">CEBALLOS</div>
-		<div class="authorName">CESAR</div>
-		<div class="authorName">CHATZIDZAKIS</div>
-		<div class="authorName">ZOE</div>
-		<div class="authorName">CHEN</div>
-		<div class="authorName">KE</div>
-		<div class="authorName">CHEN</div>
-		<div class="authorName">MIAOFEN</div>
-		<div class="authorName">CHRISTENSEN</div>
-		<div class="authorName">CHRISTIAN</div>
-		<div class="authorName">CHRISTIE</div>
-		<div class="authorName">AARON</div>
-		<div class="authorName">COTTERIL</div>
-		<div class="authorName">ETHAN</div>
-		<div class="authorName">CUETO</div>
-		<div class="authorName">MARIA ANGELICA</div>
-		<div class="authorName">CUNNIGHAM</div>
-		<div class="authorName">CLIFTON</div>
-		<div class="authorName">DEL BLANCO MRANAA</div>
-		<div class="authorName">JESUS M.</div>
-		<div class="authorName">DELLO STRITTO</div>
-		<div class="authorName">PIETRO</div>
-		<div class="authorName">DISEGNI</div>
-		<div class="authorName">DANIEL</div>
-		<div class="authorName">DOCAMPO</div>
-		<div class="authorName">Roi</div>
-		<div class="authorName">DOSPINESCU</div>
-		<div class="authorName">GABRIEL</div>
+		<div class="authorName">Allain LOUIS</div>
+		<div class="authorName">Alexandre AMOURIQ</div>
+		<div class="authorName">Jules AUDURIER</div>
+		<div class="authorName">Youri BERNARD</div>
+		<div class="authorName">Mael BERRIGAUD</div>
+		<div class="authorName">Ewen BOUDER</div>
+		<div class="authorName">Charles COGOLUEGNES</div>
+		<div class="authorName">Allan COMISSO</div>
+		<div class="authorName">Anton COSNEFROY</div>
+		<div class="authorName">Liam COTTE</div>
+		<div class="authorName">Arthur DEMBIERMONT</div>
+		<div class="authorName">Alexy DUHAMEL</div>
+		<div class="authorName">Valentin DURAND</div>
+		<div class="authorName">Tristan FURNO</div>
+		<div class="authorName">Pierre GOUJON</div>
+		<div class="authorName">Johan GOUSSET</div>
+		<div class="authorName">Maxime GUILLAUME</div>
+		<div class="authorName">Pierre GURIEL-FARDEL</div>
+		<div class="authorName">Maxime HAMON</div>
+		<div class="authorName">Nesrine HANTAT</div>
+		<div class="authorName">Samuel LE BERRE</div>
+		<div class="authorName">Maël LE GAL</div>
+		<div class="authorName">Clement MALLEJAC</div>
+		<div class="authorName">Vincent MAURICE</div>
+		<div class="authorName">Nathan MINGOUBE</div>
+		<div class="authorName">Abdelilah MOULIDA</div>
+		<div class="authorName">Cynthia PIQUET</div>
+		<div class="authorName">Goulven POULALIOU</div>
+		<div class="authorName">Faroud SADIKOU</div>
+		<div class="authorName">Florent SIMONET</div>
+		<div class="authorName">Aliyou SYLLA</div>
+		<div class="authorName">Guenole THEVENARD</div>
+		<div class="authorName">Romann YVINEC</div>
 	</div>
 </body>
 </html>
@@ -105,8 +79,6 @@ a{
 }
 
 #authors{
-	position: absolute;
-	left: 44.5vw;
 	text-align: center;
 }
 
