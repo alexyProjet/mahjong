@@ -5,8 +5,8 @@
         <servlet-class>fr.univubs.inf1603.mahjong.interfaces.web.servlets.accueil</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>createGame</servlet-name>
-        <servlet-class>fr.univubs.inf1603.mahjong.interfaces.web.servlets.createGame</servlet-class>
+        <servlet-name>createLobby</servlet-name>
+        <servlet-class>fr.univubs.inf1603.mahjong.interfaces.web.servlets.createLobby</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>lobby</servlet-name>
@@ -44,12 +44,22 @@
         <servlet-name>endGame</servlet-name>
         <servlet-class>fr.univubs.inf1603.mahjong.interfaces.web.servlets.endGame</servlet-class>
     </servlet>
+     <!-- Initialisation simple -->
+    <servlet>
+        <servlet-name>SimpleInitServlet</servlet-name>
+        <servlet-class>fr.univubs.inf1603.mahjong.interfaces.web.servlets.SimpleInitServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>setReady</servlet-name>
+        <servlet-class>fr.univubs.inf1603.mahjong.interfaces.web.servlets.setReady</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>accueil</servlet-name>
         <url-pattern>/accueil</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>createGame</servlet-name>
+        <servlet-name>createLobby</servlet-name>
         <url-pattern>/createLobby</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
@@ -87,6 +97,10 @@
     <servlet-mapping>
         <servlet-name>endGame</servlet-name>
         <url-pattern>/endGame</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>setReady</servlet-name>
+        <url-pattern>/setReady</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

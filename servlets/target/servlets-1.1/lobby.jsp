@@ -54,26 +54,26 @@
                         <i class="fas fa-crown"></i>
                     </div>
                     <div id="player2">
-                        ${lobby.getPlayers()[1]!=null && ownerUUID.equals(lobby.getOwner().getUUID())? "<button id='1' class='removeBotButton'>X</button>" :"" }
+                        ${lobby.getPlayers()[1]!=null && playerId.equals(lobby.getOwner().getUUID().toString())? "<button id='1' class='removeBotButton'>X</button>" :"" }
                         <input class="playerName" type="text" name="player2" value="${lobby.getPlayers()[1].getName()}" disabled>
-                        ${lobby.getNumberOfPlayer()==1 && ownerUUID.equals(lobby.getOwner().getUUID()) ? '<button class="addBotButton">Add a bot</button>
+                        ${lobby.getNumberOfPlayer()==1 && playerId.equals(lobby.getOwner().getUUID().toString()) ? '<button class="addBotButton">Add a bot</button>
                           <select class="difficultyBot">
                           <option>SILLY</option>
                           </select>' : ""}
                     </div>
                     <div id="player3">
-                        ${lobby.getPlayers()[2]!=null && ownerUUID.equals(lobby.getOwner().getUUID()) ? "<button id='2' class=removeBotButton>X</button>" :"" }
+                        ${lobby.getPlayers()[2]!=null && playerId.equals(lobby.getOwner().getUUID().toString()) ? "<button id='2' class=removeBotButton>X</button>" :"" }
                         <input class="playerName" type="text" name="player3" value="${lobby.getPlayers()[2].getName()}" disabled>
-                        ${lobby.getNumberOfPlayer()==2 && ownerUUID.equals(lobby.getOwner().getUUID())? '<button class="addBotButton">Add a bot</button>
+                        ${lobby.getNumberOfPlayer()==2 && playerId.equals(lobby.getOwner().getUUID().toString())? '<button class="addBotButton">Add a bot</button>
                           <select class="difficultyBot">
                           <option>SILLY</option>
                           </select>' : ""}
 
                     </div>
                     <div id="player4">
-                        ${lobby.getPlayers()[3]!=null && ownerUUID.equals(lobby.getOwner().getUUID())? "<button id='3' class=removeBotButton>X</button>" :"" }
+                        ${lobby.getPlayers()[3]!=null && playerId.equals(lobby.getOwner().getUUID().toString())? "<button id='3' class=removeBotButton>X</button>" :"" }
                         <input class="playerName" type="text" name="player3" value="${lobby.getPlayers()[3].getName()}" disabled>
-                        ${lobby.getNumberOfPlayer()==3 && ownerUUID.equals(lobby.getOwner().getUUID()) ? '<button class="addBotButton">Add a bot</button>
+                        ${lobby.getNumberOfPlayer()==3 && playerId.equals(lobby.getOwner().getUUID().toString()) ? '<button class="addBotButton">Add a bot</button>
                           <select class="difficultyBot">
                           <option>SILLY</option>
                           </select>' : ""}
@@ -97,7 +97,8 @@
                 </div>
             </div>
             <div id="centerButton">
-                <a href="/game?lobbyId=${lobby.getUUID()}"><button ${lobby.getNumberOfPlayer()==4 && ownerUUID.equals(lobby.getOwner().getUUID()) && nbReadyPlayers==4 ? "" : "disabled"} id="launchButton">Launch</button></a>
+                <p>${ownerUUID}</p>
+                <a id="launchGameButton"><button ${lobby.getNumberOfPlayer()==4 && playerId.equals(lobby.getOwner().getUUID().toString()) && nbReadyPlayers==4 ? "" : "disabled"} id="launchButton">Launch</button></a>
                 <button id="readyButton">Ready (${nbReadyPlayers}/${lobby.getNumberOfPlayer()})</button>
             </div>
         </div>
@@ -105,30 +106,57 @@
 
     <script>
 
+        /*
+         setTimeout(function () {
+         window.location.reload();
+         }, 2000);
+         */
         let addBotButtons = document.getElementsByClassName("addBotButton");
         let removeBotButtons = document.getElementsByClassName("removeBotButton");
         let difficulties = document.getElementsByClassName("difficulty");
-
+        let launchButton = document.getElementById("launchGameButton");
         let readyButton = document.getElementById("readyButton");
+
+        readyButton.onclick = function () {
+            let Http = new XMLHttpRequest();
+            let url = '/lobby?action=setReady&lobbyId=${lobby.getUUID()}&playerId=' + "${playerId}";
+            Http.open("POST", url, true);
+            Http.onreadystatechange = (e) => {
+                console.log(e);
+                window.location.reload();
+            };
+            Http.send();
+        };
+
+        launchButton.onclick = function () {
+            let Http = new XMLHttpRequest();
+            let url = '/lobby?action=launchGame&lobbyId=${lobby.getUUID()}&playerId=' + '${playerId}';
+            Http.open("POST", url, true);
+            Http.onreadystatechange = (e) => {
+                console.log(e);
+            };
+            Http.send();
+        };
+
         for (button in addBotButtons) {
             addBotButtons[button].onclick = function () {
                 let Http = new XMLHttpRequest();
-                let url = '/lobby?lobby=${lobby}&action=addBot';
+                let url = '/lobby?lobbyId=${lobby.getUUID()}&action=addBot&playerId=' + "${playerId}";
                 Http.open("POST", url, true);
                 Http.onreadystatechange = (e) => {
-                    console.log(e);
+                    console.log(e.currentTarget.response);
                     window.location.reload();
                 };
                 Http.send();
             };
         }
         ;
-        let index=0;
+        let index = 0;
         for (button in removeBotButtons) {
             removeBotButtons[button].onclick = function () {
                 let Http = new XMLHttpRequest();
-                index=button;
-                let url = '/lobby?lobby=${lobby}&action=removePlayer&idPlayer='+this.id;
+                index = button;
+                let url = '/lobby?lobbyId=${lobby.getUUID()}&action=removePlayer&idPlayer=' + this.id + '&playerId=' + '${playerId}';
                 console.log(url);
                 Http.open("POST", url, true);
                 Http.onreadystatechange = (e) => {

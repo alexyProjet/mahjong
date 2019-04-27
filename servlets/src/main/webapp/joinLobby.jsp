@@ -84,7 +84,8 @@
                 Http.open("POST", url, true);
                 Http.onreadystatechange = (e) => {
                     if (Http.status === 200) {
-                        window.location.href = "/lobby?lobbyId=" + lobbyId + "&playerName=" + localStorage.getItem("playerName");
+                        let playerId=e.currentTarget.response;
+                        window.location.href = "/lobby?lobbyId=" + lobbyId + "&playerId="+playerId;
                     } else {
                         alert("You can't join this lobby");
                     }
