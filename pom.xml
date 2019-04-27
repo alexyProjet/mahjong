@@ -61,7 +61,6 @@
     </build>
     <modules>
         <module>servlets</module>
-        <module>controllertest</module>
         <module>embedtomcat</module>
     </modules>
     <dependencies>
