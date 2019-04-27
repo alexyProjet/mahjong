@@ -16,12 +16,6 @@ body{
     top: 10px;
 }
 
-#reminderIcon {
-    position: absolute;
-    left: 10px;
-    bottom: 10px;
-}
-
 a {
     color: black;
 }

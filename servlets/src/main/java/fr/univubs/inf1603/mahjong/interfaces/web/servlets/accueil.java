@@ -6,10 +6,8 @@
 package fr.univubs.inf1603.mahjong.interfaces.web.servlets;
 
 import java.io.IOException;
-import fr.univubs.inf1603.mahjong.interfaces.controllertest.ControllerTest;
 import fr.univubs.inf1603.mahjong.sapi.impl.SapiManagerImpl;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,10 +15,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author aster
  */
-public class accueil extends HttpServlet {
+public class accueil extends MahjongServlet {
     
-    public static ControllerTest controllerTest;
-    
+    public static SapiManagerImpl sapiManager;
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -34,9 +31,6 @@ public class accueil extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (controllerTest==null){
-            controllerTest = new ControllerTest();
-        }
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
         this.getServletContext().getRequestDispatcher("/accueil.jsp").forward(request, response);

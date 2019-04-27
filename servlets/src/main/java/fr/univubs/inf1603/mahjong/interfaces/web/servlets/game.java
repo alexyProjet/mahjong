@@ -10,18 +10,18 @@ package fr.univubs.inf1603.mahjong.interfaces.web.servlets;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import fr.univubs.inf1603.mahjong.interfaces.controllertest.ControllerTest;
 import fr.univubs.inf1603.mahjong.sapi.Lobby;
 import fr.univubs.inf1603.mahjong.exceptions.DestroyedLobbyException;
+import fr.univubs.inf1603.mahjong.sapi.SapiManager;
 import fr.univubs.inf1603.mahjong.tuto.TutoMahJong;
 import fr.univubs.inf1603.mahjong.tuto.TutoTile;
 import fr.univubs.inf1603.mahjong.tuto.TutoWind;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -29,9 +29,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author leyyg
  */
-public class game extends HttpServlet {
+public class game extends MahjongServlet {
 
-    ControllerTest controller = accueil.controllerTest;
+    //SapiManagerImpl sapiManager = (SapiManagerImpl) this.getServletContext().getAttribute("sapiManager");
     TutoMahJong tutoMahjong;
     TutoWind windPlayer;
     TutoWind windBreach;
@@ -50,6 +50,7 @@ public class game extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        SapiManager sapiManager = getSapiManager(request);
         String isTuto = request.getParameter("tuto");
 
         if ("true".equals(isTuto)) {
@@ -58,7 +59,7 @@ public class game extends HttpServlet {
             windBreach = tutoMahjong.getBreachWind();
             breachPosition = tutoMahjong.getBreachPosition();
             playerStartingHand = tutoMahjong.getPlayerStartingHand();
-            
+
             //Meld
             request.setAttribute("topMeld", "topMeld");
             request.setAttribute("rightMeld", "rightMeld");
@@ -68,8 +69,6 @@ public class game extends HttpServlet {
             //BottomHand
             request.setAttribute("bottomHandTiles", playerStartingHand);
             //response.setIntHeader("Refresh", 2);
-
-            
 
             //Wall
             request.setAttribute("topWall", "topWall");
@@ -84,7 +83,7 @@ public class game extends HttpServlet {
             request.setAttribute("bottomDiscard", "bottomDiscard");
         } else {
             String lobbyId = request.getParameter("lobbyId");
-            Lobby lobby = controller.getLobby(lobbyId);
+            Lobby lobby = sapiManager.getLobby(UUID.fromString(lobbyId));
 
             try {
                 lobby.startGame(lobby.getOwner());
@@ -92,6 +91,7 @@ public class game extends HttpServlet {
             } catch (DestroyedLobbyException ex) {
                 Logger.getLogger(game.class.getName()).log(Level.SEVERE, null, ex);
             }
+
             //Meld
             request.setAttribute("topMeld", "topMeld");
             request.setAttribute("rightMeld", "rightMeld");
