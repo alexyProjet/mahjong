@@ -10,13 +10,41 @@
               integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <link rel="stylesheet" href="game.css">
         <link rel="stylesheet" href="svg.css">
+
+
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+                <script src="jquery.wait.js"></script>
         <title>Maquette de la partie</title>
     </head>
 
     <body>
         <script>
+            
+             function majZoom(){//Zoom 
+                let tiles = $('.tile');
+                for (tile of tiles) {
+                        $(tile).on("mouseover", function () {
+                        html = $(this).attr('src');                        
+                            if(zoomOn){                                
+                                $('#zoomWindow').html('<img id="zoomTile" src="' + html + '" />');
+                                $('#zoomWindow').removeClass('hide').wait(100).addClass('hide');       
+                            }                   
+                        });
+                    }   
+            }
+            
+            function updateWall() {
+                let elems = $('.tileWall,.rotateWall');
+                for (elem of elems) {
+                    if ($(elem).hasClass('double tile'))
+                        $(elem).attr("src", "./tilesSVG/XX.svg");
+                    else if ($(elem).hasClass('single tile'))
+                        $(elem).attr("src", "./tilesSVG/XX2.svg");
+                }
+            }
+            
             $(function () {
                 /*
                  if (typeof localStorage.getItem('playerHand') !== 'undefined' && localStorage.getItem('playerHand') !== null)
@@ -34,54 +62,45 @@
                     drop: function (event, ui) {
                         if ($(ui.draggable).hasClass("ui-sortable-helper")) {
                             var itemText = $(ui.draggable);
-                            $('#bottomDiscardArea').html($('#bottomDiscardArea').html() + $(itemText).html().replace("tilePlayer", "tileDiscard tile"));
+                            $('#bottomDiscardArea').html($('#bottomDiscardArea').html() + $(itemText).html().replace("tilePlayer", "tileDiscard"));
                             $(ui.draggable).empty();
+                             majZoom();
                         }
                     }
                 });
 
 
-                function updateWall() {
-                     let elems = $('.tileWall,.rotateWall');
-                for (elem of elems) {
-                    if ($(elem).hasClass('double tile'))
-                        $(elem).attr("src", "./tilesSVG/XX2.svg");
-                    else if ($(elem).hasClass('single tile'))
-                        $(elem).attr("src", "./tilesSVG/XX.svg");
-                }
-            };
 
+            
+            updateWall();
+            
 
-                updateWall();
-
-
-
-                //Zoom sur 'e'
-                let tiles = $('.tile');
-                for (tile of tiles) {
-                    $(tile).on("mouseover", function () {
-                        html = $(this).attr('src');
-                        document.addEventListener("keypress", function (e) {
-                            if (e.charCode == 101) {
-                                if ($('#zoomWindow').hasClass('hide'))
-                                    $('#zoomWindow').removeClass('hide');
-                                else
-                                    $('#zoomWindow').addClass('hide');
-                                $('#zoomWindow').html('<img id="zoomTile" src="' + html + '" />');
-                            }
-                        });
-                    });
-                }
-                //Dezoom
-                $('#zoomWindow').on('click', function () {
-                    $('#zoomWindow').addClass('hide');
-                    $('#zoomWindow').html('');
-                });
+            zoomOn = false;
+            document.addEventListener('keydown', function(e){
+              if(e.key === 'e'){
+                  if(zoomOn === true){
+                      zoomOn = false;
+                      Swal.fire({ type: 'error',title: 'Zoom off',showConfirmButton: false,timer: 250});
+                  }else{
+                      zoomOn = true;
+                      Swal.fire({ type: 'success',title: 'Zoom on',showConfirmButton: false,timer: 250});
+                  }
+              }     
             });
+
+            
+          
+            majZoom();
+        });
+            
         </script>
                <%@ include file="buttons.jsp" %>
 
         <a href="greenbook_en.pdf" target="_blank"><i id="reminderIcon" class="fas fa-info fa-5x"></i></a>
+
+         <div id="zoomWindow" class="hide">
+             <div id="zoom"></div>
+        </div>
 
         <div id="topPlayer">
             <div id="topHand" class="hand">

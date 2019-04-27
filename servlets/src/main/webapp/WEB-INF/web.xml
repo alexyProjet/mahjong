@@ -40,6 +40,10 @@
         <servlet-name>credits</servlet-name>
         <servlet-class>fr.univubs.inf1603.mahjong.interfaces.web.servlets.credits</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>endGame</servlet-name>
+        <servlet-class>fr.univubs.inf1603.mahjong.interfaces.web.servlets.endGame</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>accueil</servlet-name>
         <url-pattern>/accueil</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>credits</servlet-name>
         <url-pattern>/credits</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>endGame</servlet-name>
+        <url-pattern>/endGame</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
