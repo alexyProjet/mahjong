@@ -5,27 +5,31 @@
  */
 package fr.univubs.inf1603.mahjong.interfaces.web.servlets;
 
-import fr.univubs.inf1603.mahjong.interfaces.controllertest.ControllerTest;
+import fr.univubs.inf1603.mahjong.sapi.HumanInLobby;
 import fr.univubs.inf1603.mahjong.sapi.Lobby;
-import fr.univubs.inf1603.mahjong.sapi.impl.HumanInLobbyImpl;
+import fr.univubs.inf1603.mahjong.sapi.SapiManager;
 import java.io.IOException;
+import java.io.Writer;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.InvalidNameException;
 
 /**
  *
  * @author aster
  */
-public class joinLobby extends HttpServlet {
+public class joinLobby extends MahjongServlet {
 
-    ControllerTest controller = accueil.controllerTest;
+    //SapiManagerImpl sapiManager = (SapiManagerImpl) this.getServletContext().getAttribute("sapiManager");
     List<Lobby> lobbies;
     boolean lobbyExists;
     Lobby lobby;
-    HumanInLobbyImpl humanInLobby;
+    HumanInLobby humanInLobby;
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -45,8 +49,9 @@ public class joinLobby extends HttpServlet {
         Boolean visible = "Public".equals("Public");
         sapiManager.createLobby("Maxime", humanInLobby, simpleRule, visible,5,5);
          */
+        SapiManager sapiManager = getSapiManager(request);
 
-        List<Lobby> lobbyList = controller.getVisibleLobbies();
+        List<Lobby> lobbyList = sapiManager.getVisibleLobbies();
         request.setAttribute("lobbyList", lobbyList);
         response.setIntHeader("Refresh", 5);
         this.getServletContext().getRequestDispatcher("/joinLobby.jsp").forward(request, response);
@@ -63,16 +68,23 @@ public class joinLobby extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        SapiManager sapiManager = getSapiManager(request);
+        Writer writer = response.getWriter();
         String lobbyId = request.getParameter("lobbyId");
-        String playerName=request.getParameter("playerName");
+        String playerName = request.getParameter("playerName");
 
-        if (lobbyId != null & playerName!=null) {
-            humanInLobby = controller.createHumanInLobby(playerName);
-            boolean isJoin=controller.joinLobby(lobbyId, humanInLobby);
-            if(isJoin){
-                humanInLobby.setReady(true);
+        if (lobbyId != null & playerName != null) {
+            try {
+                humanInLobby = sapiManager.createHumanInLobby(playerName);
+            } catch (InvalidNameException ex) {
+                Logger.getLogger(joinLobby.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            boolean isJoin = sapiManager.joinLobby(UUID.fromString(lobbyId), humanInLobby);
+            if (isJoin) {
+                setHumanInLobby(request, humanInLobby,humanInLobby.getUUID());
+                writer.append(humanInLobby.getUUID().toString());
                 response.setStatus(200);
-            }else{
+            } else {
                 response.setStatus(401);
             }
         }

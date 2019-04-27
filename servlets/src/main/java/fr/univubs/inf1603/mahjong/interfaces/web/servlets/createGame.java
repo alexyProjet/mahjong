@@ -29,29 +29,6 @@ public class createGame extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String name=request.getParameter("name");
-        String visibility=request.getParameter("visibility");
-        String rule=request.getParameter("rule");
-        String playTime=request.getParameter("playTime");
-        String stealTime=request.getParameter("stealTime");
-        
-        if(name!=null){
-            request.setAttribute("name",name );
-        }
-        
-        if (visibility!=null & ("private".equals(visibility) | "public".equals(visibility))){
-            request.setAttribute("visibility", visibility);
-        }
-        
-        if(rule!=null & ("traditionnal".equals(rule))){
-            request.setAttribute("rule", rule);
-        }
-        
-        if(playTime!=null & stealTime!=null){
-            request.setAttribute("time", stealTime);
-            request.setAttribute("pickTime", stealTime);
-        } 
-        this.getServletContext().getRequestDispatcher("/createGame.jsp").forward(request, response);
     }
 
     /**
@@ -65,6 +42,7 @@ public class createGame extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
     }
 
     /**

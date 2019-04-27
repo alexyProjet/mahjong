@@ -5,9 +5,13 @@
  */
 package fr.univubs.inf1603.mahjong.interfaces.web.servlets;
 
-import fr.univubs.inf1603.mahjong.interfaces.controllertest.ControllerTest;
 import fr.univubs.inf1603.mahjong.sapi.HumanInLobby;
+import fr.univubs.inf1603.mahjong.sapi.SapiManager;
+import fr.univubs.inf1603.mahjong.sapi.impl.SapiManagerImpl;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.InvalidNameException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,11 +21,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author aster
  */
-public class createPlayer extends HttpServlet {
+public class createPlayer extends MahjongServlet {
 
     HumanInLobby humanInLobby;
-    ControllerTest controller = accueil.controllerTest;
-
+      
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -34,8 +37,13 @@ public class createPlayer extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        SapiManager sapiManager = getSapiManager(request);
         if (request.getParameter("playerName") != null) {
-            humanInLobby = controller.createHumanInLobby("joinPlayer");
+            try {
+                humanInLobby = sapiManager.createHumanInLobby("joinPlayer");
+            } catch (InvalidNameException ex) {
+                Logger.getLogger(createPlayer.class.getName()).log(Level.SEVERE, null, ex);
+            }
             request.setAttribute("player", humanInLobby);
             this.getServletContext().getRequestDispatcher("/accueil.jsp").forward(request, response);
         }
