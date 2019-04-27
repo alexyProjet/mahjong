@@ -35,7 +35,7 @@
                 </thead>
                 <tbody id="tableBody">
                     <c:forEach items="${ lobbyList }" var="lobby" varStatus="status">
-                        <tr class='lobby'> <th>${lobby.getUUID()}</th> <th>${lobby.getName()}</th> <th>${lobby.getRule()}</th> <th>${lobby.getNumberOfPlayer()}/4</th> </tr>;
+                        <tr class='lobby'> <th>${lobby.getUUID()}</th> <th>${lobby.getName()}</th> <th>${lobby.getRule()}</th> <th>${lobby.getNumberOfPlayer()}/4</th> </tr>
                     </c:forEach>
                 </tbody>
             </table>

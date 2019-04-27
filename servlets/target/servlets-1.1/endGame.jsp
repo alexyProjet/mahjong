@@ -12,58 +12,97 @@
         <title>Results</title>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     </head>
- 
+
     <body>
-           <script>
-               
-    function updateScore() {
+        <script>
+
+            function updateScore() {
                 let elems = $('.player');
                 for (elem of elems) {
-                    console.log(elem);
                     if ($(elem).hasClass('player'))
-                        $(elem).css("color","#202020");
+                        $(elem).css("color", "#202020");
                     else
-                        $(elem).css("color","#d3d3d3");
+                        $(elem).css("color", "#d3d3d3");
                 }
             }
-    $(function(){
-            updateScore();
-    });
-    
-</script>
+            $(function () {
+                updateScore();
+            });
+
+        </script>
         <h1 id="title">Results</h1>
-        
+
         <div id="results">
             <div id="firstBlock">
                 <img id="oneImg"  class="rank" src="/scoreSVG/one.svg">
                 <div class="windScoreBlock" >
-                    <div class="wind" id="firstWind">Est</div>
-                    <div class="score" id="firstScore">Score : 28</div>
+                    <c:if test="${ player.getWind() == firstWind.getWind()}">
+                        <div class="wind player" id="firstWind">${firstWind.getWind()}</div>
+                    </c:if>
+                    <c:if test="${ player.getWind() != firstWind.getWind()}">
+                        <div class="wind" id="firstWind">${firstWind.getWind()}</div>
+                    </c:if>
+                    <c:if test="${ player.getWind() == firstWind.getWind()}">
+                        <div class="score player" id="firstScore">Score : ${firstWind.getScore()}</div>
+                    </c:if>
+                    <c:if test="${ player.getWind() != firstWind.getWind()}">
+                        <div class="score" id="firstScore">Score : ${firstWind.getScore()}</div>
+                    </c:if>
                 </div>
             </div>
             <div id="block">
                 <div class="otherBlock">
                     <img class="rank otherImg" src="/scoreSVG/two.svg">
                     <div class="windScoreBlock ">
-                        <div class="wind otherWind player">South</div>
-                        <div class="score otherScore player">Score : 22</div>
+                        <c:if test="${ player.getWind() == secondWind.getWind()}">
+                            <div class="wind otherWind player">${secondWind.getWind()}</div>
+                        </c:if>
+                        <c:if test="${ player.getWind() != secondWind.getWind()}">
+                            <div class="wind otherWind">${secondWind.getWind()}</div>
+                        </c:if>
+                        <c:if test="${ player.getWind() == secondWind.getWind()}">
+                            <div class="score player otherScore">Score : ${secondWind.getScore()}</div>
+                        </c:if>
+                        <c:if test="${ player.getWind() != secondWind.getWind()}">
+                            <div class="score otherScore">Score : ${secondWind.getScore()}</div>
+                        </c:if>
                     </div>
                 </div>
                 <div class="otherBlock">
                     <img  class="rank otherImg" src="/scoreSVG/three.svg">
                     <div class="windScoreBlock">
-                        <div class="wind otherWind">North</div>
-                        <div class="score otherScore">Score : 18</div>
+                        <c:if test="${ player.getWind() == thirdWind.getWind()}">
+                            <div class="wind otherWind player">${thirdWind.getWind()}</div>
+                        </c:if>
+                        <c:if test="${ player.getWind() != thirdWind.getWind()}">
+                            <div class="wind otherWind">${thirdWind.getWind()}</div>
+                        </c:if>
+                        <c:if test="${ player.getWind() == thirdWind.getWind()}">
+                            <div class="score player otherScore">Score : ${thirdWind.getScore()}</div>
+                        </c:if>
+                        <c:if test="${ player.getWind() != thirdWind.getWind()}">
+                            <div class="score otherScore">Score : ${thirdWind.getScore()}</div>
+                        </c:if>
                     </div>
                 </div>
                 <div class="otherBlock">
                     <img  class="rank otherImg" src="/scoreSVG/four.svg">
                     <div class="windScoreBlock">
-                        <div class="wind otherWind">West</div>
-                        <div class="score otherScore">Score : 14</div>
+                        <c:if test="${ player.getWind() == fourthWind.getWind()}">
+                            <div class="wind otherWind player">${fourthWind.getWind()}</div>
+                        </c:if>
+                        <c:if test="${ player.getWind() != fourthWind.getWind()}">
+                            <div class="wind otherWind">${fourthWind.getWind()}</div>
+                        </c:if>
+                        <c:if test="${ player.getWind() == fourthWind.getWind()}">
+                            <div class="score player otherScore">Score : ${fourthWind.getScore()}</div>
+                        </c:if>
+                        <c:if test="${ player.getWind() != fourthWind.getWind()}">
+                            <div class="score otherScore">Score : ${fourthWind.getScore()}</div>
+                        </c:if>
                     </div>
                 </div>
-                
+
             </div>
             <div id="goHomeBlock">
                 <button id="goHomeButton" onclick="window.location.href = '/accueil'">Go Home !</button>
@@ -74,27 +113,27 @@
 
 <style>
     #title{
-	display: absolute;
-	text-align: center;
-	margin-top: 5vh;
+        display: absolute;
+        text-align: center;
+        margin-top: 5vh;
     }
     #results{
-	position: absolute;
-	display: flex;
-	flex-direction: column;
-	top: 50vh;
-	left: 50vw;
-	transform:translate(-50%, -50%);
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 50vh;
+        left: 50vw;
+        transform:translate(-50%, -50%);
     }
     #goHomeBlock{
-	text-align: center;
+        text-align: center;
         padding-top: 7vh;
     }
     #goHomeButton{
-	margin: 10px;
-	height: 7vh;
-	width: 20vw;
-	text-align: center;
+        margin: 10px;
+        height: 7vh;
+        width: 20vw;
+        text-align: center;
     }
     #firstBlock{
         border-radius: 0px 0px 100px 0px;
@@ -105,13 +144,13 @@
         padding: 30px;
         display: flex;
         flex-direction: row;
-        
-        
+
+
     }
     #oneImg{
         height:20vh;
         width: 20vw;
-       margin-left: 10vw;
+        margin-left: 10vw;
     }
     .otherImg{
         height:10vh;
@@ -156,7 +195,7 @@
         line-height: 18px;
         margin: 0 0 12px;
     }
-    
+
     #block{
         display: flex;
         flex-direction: row;

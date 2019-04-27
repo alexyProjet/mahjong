@@ -42,7 +42,9 @@
                 });
             });
         </script>
-        <%@ include file="buttons.jsp" %>
+
+        <a href="/displayParameters"><i id="parametersIcon" class="fas fa-cog fa-5x"></i></a>
+        <a href="/accueil"><i id="homeIcon" class="fas fa-sign-out-alt fa-5x"></i></a>
 
         <h1 id="title">${lobby.getName()}</h1>
         <h4>The Id of the Lobby :</h4> 
@@ -106,18 +108,18 @@
     </body>
 
     <script>
-         setTimeout(function () {
-         window.location.reload();
-         }, 4000);
-         
+        setTimeout(function () {
+            window.location.reload();
+        }, 4000);
+
         let addBotButtons = document.getElementsByClassName("addBotButton");
         let removeBotButtons = document.getElementsByClassName("removeBotButton");
         let difficulties = document.getElementsByClassName("difficulty");
         let launchButton = document.getElementById("launchGameButton");
         let readyButton = document.getElementById("readyButton");
-        let visibilitySettings=document.getElementById("visibilitySettings");
-     
-        visibilitySettings.onchange=function(){
+        let visibilitySettings = document.getElementById("visibilitySettings");
+
+        visibilitySettings.onchange = function () {
             let Http = new XMLHttpRequest();
             let url = '/lobby?action=changeVisibility&lobbyId=${lobby.getUUID()}&playerId=' + "${playerId}";
             Http.open("POST", url, true);
@@ -177,6 +179,11 @@
             };
         }
         ;
+        $(function () {
+            $('a').on('click', function () {
+                localStorage.setItem('restoreURL', $(location).attr('href'));
+            });
+        });
 
 
     </script>
