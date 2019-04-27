@@ -10,9 +10,13 @@ package fr.univubs.inf1603.mahjong.interfaces.web.servlets;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import fr.univubs.inf1603.mahjong.engine.rule.Wind;
+import fr.univubs.inf1603.mahjong.exceptions.DestroyedGameException;
 import fr.univubs.inf1603.mahjong.sapi.Lobby;
 import fr.univubs.inf1603.mahjong.exceptions.DestroyedLobbyException;
+import fr.univubs.inf1603.mahjong.sapi.Player;
 import fr.univubs.inf1603.mahjong.sapi.SapiManager;
+import fr.univubs.inf1603.mahjong.sapi.SimpleGame;
 import fr.univubs.inf1603.mahjong.tuto.TutoMahJong;
 import fr.univubs.inf1603.mahjong.tuto.TutoTile;
 import fr.univubs.inf1603.mahjong.tuto.TutoWind;
@@ -82,16 +86,16 @@ public class game extends MahjongServlet {
             request.setAttribute("leftDiscard", "leftDiscard");
             request.setAttribute("bottomDiscard", "bottomDiscard");
         } else {
-            String lobbyId = request.getParameter("lobbyId");
-            Lobby lobby = sapiManager.getLobby(UUID.fromString(lobbyId));
-
+            String gameId = request.getParameter("gameId");
+            SimpleGame game = sapiManager.getGame(UUID.fromString(gameId));
+            String playerId = request.getParameter("playerId");
+            Player player=(Player) getMyHuman(request, UUID.fromString(playerId));
             try {
-                lobby.startGame(lobby.getOwner());
-
-            } catch (DestroyedLobbyException ex) {
+                game.launchGame();
+                request.setAttribute("myHand", game.getBoard(player).getHand(player.getWind()));
+            } catch (DestroyedGameException ex) {
                 Logger.getLogger(game.class.getName()).log(Level.SEVERE, null, ex);
             }
-
             //Meld
             request.setAttribute("topMeld", "topMeld");
             request.setAttribute("rightMeld", "rightMeld");

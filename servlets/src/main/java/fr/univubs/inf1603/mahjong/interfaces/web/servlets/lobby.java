@@ -53,7 +53,6 @@ public class lobby extends MahjongServlet {
         SapiManager sapiManager = getSapiManager(request);
         String playerId = request.getParameter("playerId");
         String lobbyId = request.getParameter("lobbyId");
-        System.out.println(playerId);
         List<PlayerInLobby> players;
         if (lobbyId != null) {
             if (sapiManager.getGame(UUID.fromString(lobbyId)) != null) {
@@ -64,20 +63,18 @@ public class lobby extends MahjongServlet {
                 try {
                     nbReadyPlayers = 0;
                     players = lobby.getPlayers();
-                    /*
-                    TODO setReady ne fonctionne plus
-                    
                     for (int i = 0; i < lobby.getNumberOfPlayer(); i++) {
-                        if (players.get(i).isReady()==false) {
+                        if (players.get(i) instanceof fr.univubs.inf1603.mahjong.sapi.impl.BotInLobbyImpl) {
+                            nbReadyPlayers += 1;
+                        } else if (getMyHuman(request, players.get(i).getUUID()).isReady() == true) {
                             nbReadyPlayers += 1;
                         } else {
                             System.out.println(i);
                         }
-                    }*/
-                    
+                    }
                     request.setAttribute("playerId", playerId);
                     request.setAttribute("lobby", lobby);
-                    request.setAttribute("nbReadyPlayers", 4);
+                    request.setAttribute("nbReadyPlayers", nbReadyPlayers);
                     this.getServletContext().getRequestDispatcher("/lobby.jsp").forward(request, response);
                 } catch (DestroyedLobbyException ex) {
                     Logger.getLogger(lobby.class.getName()).log(Level.SEVERE, null, ex);
@@ -113,7 +110,6 @@ public class lobby extends MahjongServlet {
         if (ownerLobby.getUUID().toString().equals(playerId)) {
             try {
                 if ("addBot".equals(action)) {
-                    System.out.println("rtfgyuhjk");
                     lobby.addBot(Difficulty.SILLY, ownerLobby);
                     writer.print(lobby.getPlayers());
                 } else if ("removePlayer".equals(action)) {
@@ -123,6 +119,8 @@ public class lobby extends MahjongServlet {
                     String id = lobby.getUUID().toString();
                     isStart = lobby.startGame(ownerLobby);
                     writer.append(id);
+                } else if("changeVisibility".equals(action)){
+                    lobby.setVisible(ownerLobby);
                 }
             } catch (DestroyedLobbyException ex) {
                 Logger.getLogger(lobby.class.getName()).log(Level.SEVERE, null, ex);
@@ -130,11 +128,11 @@ public class lobby extends MahjongServlet {
         }
 
         if ("setReady".equals(action) && playerId != null) {
-            HumanInLobby humanInLobby=getMyHumanInLobby(request, UUID.fromString(playerId));
+            HumanInLobby humanInLobby = getMyHuman(request, UUID.fromString(playerId));
             if (humanInLobby.isReady()) {
                 System.out.println("yes");
                 humanInLobby.setReady(false);
-            }else{
+            } else {
                 humanInLobby.setReady(true);
             }
         }

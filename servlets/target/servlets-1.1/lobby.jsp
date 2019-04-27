@@ -45,7 +45,8 @@
         <%@ include file="buttons.jsp" %>
 
         <h1 id="title">${lobby.getName()}</h1>
-
+        <h4>The Id of the Lobby :</h4> 
+        <h4> ${lobby.getUUID().toString()}</h4>
         <div id="lobby">
             <div id="topArea">
                 <div id="players">
@@ -79,13 +80,13 @@
                           </select>' : ""}
                     </div>
                 </div>
-                <script>console.log("${lobby.isVisible()}");</script>
                 <div id="lobbyParameters">
-                    <select class="lobbyParameter" id="visibility">
+                    <select  ${playerId.equals(lobby.getOwner().getUUID().toString()) ? "" : "disabled"} class="lobbyParameter" id="visibilitySettings">
                         <option>Public</option>
                         <option ${!lobby.isVisible() ? "selected" : ""}>Private</option>
                     </select>
-                    <input class="lobbyParameter" type="text" value=${lobby.getRule().getDescription()} disabled>
+                    <!--TODO Attendre que description fonctionne-->
+                    <input class="lobbyParameter" type="text" value=${lobby.getRule()} disabled>
                     <h3>Choose the time to discard</h3>
                     <div>
                         <div style="text-align: center;">${lobby.getPlayTime()}</div>
@@ -105,17 +106,26 @@
     </body>
 
     <script>
-
-        /*
          setTimeout(function () {
          window.location.reload();
-         }, 2000);
-         */
+         }, 4000);
+         
         let addBotButtons = document.getElementsByClassName("addBotButton");
         let removeBotButtons = document.getElementsByClassName("removeBotButton");
         let difficulties = document.getElementsByClassName("difficulty");
         let launchButton = document.getElementById("launchGameButton");
         let readyButton = document.getElementById("readyButton");
+        let visibilitySettings=document.getElementById("visibilitySettings");
+     
+        visibilitySettings.onchange=function(){
+            let Http = new XMLHttpRequest();
+            let url = '/lobby?action=changeVisibility&lobbyId=${lobby.getUUID()}&playerId=' + "${playerId}";
+            Http.open("POST", url, true);
+            Http.onreadystatechange = (e) => {
+                console.log(e);
+            };
+            Http.send();
+        };
 
         readyButton.onclick = function () {
             let Http = new XMLHttpRequest();

@@ -81,7 +81,7 @@ public class joinLobby extends MahjongServlet {
             }
             boolean isJoin = sapiManager.joinLobby(UUID.fromString(lobbyId), humanInLobby);
             if (isJoin) {
-                setHumanInLobby(request, humanInLobby,humanInLobby.getUUID());
+                setHuman(request, humanInLobby,humanInLobby.getUUID());
                 writer.append(humanInLobby.getUUID().toString());
                 response.setStatus(200);
             } else {

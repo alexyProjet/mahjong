@@ -172,7 +172,7 @@
             </div>
             <div id="bottomHand" class="hand">
                 <ul id="sortable">
-                    <c:forEach items="${bottomHandTiles}" var="tile">
+                    <c:forEach items="${myHand}" var="tile">
                         <li class="playerTiles">
                             <img class="tilePlayer tile" src="./tilesSVG/${tile}.svg" />
                         </li>

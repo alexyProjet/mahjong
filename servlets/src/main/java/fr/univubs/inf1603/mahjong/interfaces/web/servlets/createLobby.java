@@ -11,12 +11,10 @@ import fr.univubs.inf1603.mahjong.exceptions.UsedNameException;
 import fr.univubs.inf1603.mahjong.sapi.Difficulty;
 import fr.univubs.inf1603.mahjong.sapi.HumanInLobby;
 import fr.univubs.inf1603.mahjong.sapi.Lobby;
-import fr.univubs.inf1603.mahjong.sapi.Player;
 import fr.univubs.inf1603.mahjong.sapi.SapiManager;
 import fr.univubs.inf1603.mahjong.sapi.SimpleRule;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.InvalidNameException;
@@ -42,6 +40,7 @@ public class createLobby extends MahjongServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        SapiManager sapiManager = getSapiManager(request);
         String name = request.getParameter("name");
         String visibility = request.getParameter("visibility");
         String rule = request.getParameter("rule");
@@ -56,14 +55,18 @@ public class createLobby extends MahjongServlet {
             request.setAttribute("visibility", visibility);
         }
 
-        if (rule != null & ("traditionnal".equals(rule))) {
-            request.setAttribute("rule", rule);
+         if (sapiManager.getRules().contains(rule)) {
+            request.setAttribute("selectedRule", rule);
         }
+
+
 
         if (playTime != null & stealTime != null) {
             request.setAttribute("time", stealTime);
             request.setAttribute("pickTime", stealTime);
         }
+        
+         request.setAttribute("rules",sapiManager.getRules());
         this.getServletContext().getRequestDispatcher("/createLobby.jsp").forward(request, response);
     }
 
@@ -102,7 +105,7 @@ public class createLobby extends MahjongServlet {
                 lobby = sapiManager.createLobby(name, ownerLobby, simpleRule, visible, stealTime, playTime, Difficulty.SILLY);
                 try {
                     setOwner(request,ownerLobby, lobby.getUUID());
-                    setHumanInLobby(request,ownerLobby, ownerLobby.getUUID());
+                    setHuman(request,ownerLobby, ownerLobby.getUUID());
                 } catch (DestroyedLobbyException ex) {
                     Logger.getLogger(createLobby.class.getName()).log(Level.SEVERE, null, ex);
                 }

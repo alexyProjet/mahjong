@@ -6,8 +6,6 @@
 package fr.univubs.inf1603.mahjong.interfaces.web.servlets;
 
 import fr.univubs.inf1603.mahjong.sapi.HumanInLobby;
-import fr.univubs.inf1603.mahjong.sapi.Player;
-import fr.univubs.inf1603.mahjong.sapi.PlayerInLobby;
 import fr.univubs.inf1603.mahjong.sapi.SapiManager;
 import java.util.HashMap;
 import java.util.UUID;
@@ -61,7 +59,7 @@ public class MahjongServlet extends HttpServlet {
      * @param playerId the player's id
      * @return The player we want
      */
-    protected HumanInLobby getMyHumanInLobby(HttpServletRequest request, UUID playerId) {
+    protected HumanInLobby getMyHuman(HttpServletRequest request, UUID playerId) {
         HashMap<UUID, HumanInLobby> map = (HashMap<UUID, HumanInLobby>) request.getServletContext().getAttribute("playerMap");
         return map.get(playerId);
     }
@@ -73,7 +71,7 @@ public class MahjongServlet extends HttpServlet {
      * @param player
      * @param lobbyId
      */
-    protected void setHumanInLobby(HttpServletRequest request, HumanInLobby human, UUID humanInLobbyId) {
+    protected void setHuman(HttpServletRequest request, HumanInLobby human, UUID humanInLobbyId) {
         HashMap<UUID, HumanInLobby> map = (HashMap<UUID, HumanInLobby>) request.getServletContext().getAttribute("playerMap");
         map.put(humanInLobbyId, human);
         request.getServletContext().setAttribute("playerMap", map);

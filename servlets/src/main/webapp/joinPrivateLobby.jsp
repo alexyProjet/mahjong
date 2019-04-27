@@ -19,25 +19,25 @@
     </body>
 
     <script>
-        let lobbyId; 
+        let lobbyId;
         let joinForm = document.getElementById("joinForm");
         let Http = new XMLHttpRequest();
         let url;
         joinForm.onsubmit = function (e) {
             e.preventDefault();
             lobbyId = document.getElementById("lobbyId").value;
-            url = "/joinLobby?lobbyId=" + lobbyId+"&playerName="+localStorage.getItem("playerName");
+            url = "/joinLobby?lobbyId=" + lobbyId + "&playerName=" + localStorage.getItem("playerName");
             Http.open("POST", url, true);
             Http.onreadystatechange = (e) => {
                 if (Http.status === 200) {
-                    window.location.href = "/lobby?lobbyId=" + lobbyId+"&playerName="+localStorage.getItem("playerName");
+                    window.location.href = "/lobby?lobbyId=" + lobbyId + "&playerId=" + e.currentTarget.response;
                 } else {
                     alert("You can't join this lobby");
                 }
             };
             Http.send();
         };
-        
+
 
 
     </script>
