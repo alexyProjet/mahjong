@@ -8,3 +8,4 @@
 /home/florent/NetBeansProjects/mahjong/servlets/src/main/java/fr/univubs/inf1603/mahjong/interfaces/web/servlets/createGame.java
 /home/florent/NetBeansProjects/mahjong/servlets/src/main/java/fr/univubs/inf1603/mahjong/interfaces/web/servlets/game.java
 /home/florent/NetBeansProjects/mahjong/servlets/src/main/java/fr/univubs/inf1603/mahjong/interfaces/web/servlets/credits.java
+/home/florent/NetBeansProjects/mahjong/servlets/src/main/java/fr/univubs/inf1603/mahjong/interfaces/web/servlets/endGame.java
