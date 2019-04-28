@@ -34,7 +34,6 @@ public class lobby extends MahjongServlet {
     HumanInLobby ownerLobby;
     int nbReadyPlayers;
 
-    //sapiManager=(SapiManagerImpl) this.getServletContext().getAttribute("sapiManager");
     boolean lobbyExists;
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -72,6 +71,7 @@ public class lobby extends MahjongServlet {
                             System.out.println(i);
                         }
                     }
+                    request.setAttribute("Difficulties", lobby.getBotDifficulties());
                     request.setAttribute("playerId", playerId);
                     request.setAttribute("lobby", lobby);
                     request.setAttribute("nbReadyPlayers", nbReadyPlayers);
@@ -99,7 +99,7 @@ public class lobby extends MahjongServlet {
         String action = request.getParameter("action");
         String lobbyId = request.getParameter(("lobbyId"));
         String playerId = request.getParameter("playerId");
-
+        String botDifficulty = request.getParameter("botDifficulty");
         boolean isStart;
         isStart = false;
         PrintWriter writer = response.getWriter();
@@ -108,25 +108,29 @@ public class lobby extends MahjongServlet {
         lobby = sapiManager.getLobby(UUID.fromString(lobbyId));
         ownerLobby = getOwner(request, UUID.fromString(lobbyId));
         if (ownerLobby.getUUID().toString().equals(playerId)) {
+            HumanInLobby humanInLobby = getMyHuman(request, UUID.fromString(playerId));
             try {
                 if ("addBot".equals(action)) {
-                    lobby.addBot(Difficulty.SILLY, ownerLobby);
-                    writer.print(lobby.getPlayers());
+                    if ("SILLY".equals(botDifficulty)) {
+                        lobby.addBot(Difficulty.SILLY, humanInLobby);
+                    } else if ("EASY".equals(botDifficulty)) {
+                        lobby.addBot(Difficulty.EASY, humanInLobby);
+                    } else {
+                    }
                 } else if ("removePlayer".equals(action)) {
                     int idPlayer = Integer.parseInt(request.getParameter("idPlayer"));
-                    lobby.removePlayer(lobby.getPlayers().get(idPlayer), ownerLobby);
+                    lobby.removePlayer(lobby.getPlayers().get(idPlayer), humanInLobby);
                 } else if ("launchGame".equals(action)) {
                     String id = lobby.getUUID().toString();
-                    isStart = lobby.startGame(ownerLobby);
+                    isStart = lobby.startGame(humanInLobby);
                     writer.append(id);
-                } else if("changeVisibility".equals(action)){
-                    lobby.setVisible(ownerLobby);
+                } else if ("changeVisibility".equals(action)) {
+                    lobby.setVisible(humanInLobby);
                 }
             } catch (DestroyedLobbyException ex) {
                 Logger.getLogger(lobby.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
         if ("setReady".equals(action) && playerId != null) {
             HumanInLobby humanInLobby = getMyHuman(request, UUID.fromString(playerId));
             if (humanInLobby.isReady()) {

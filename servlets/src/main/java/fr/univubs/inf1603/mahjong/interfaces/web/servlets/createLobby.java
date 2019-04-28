@@ -23,7 +23,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
  * @author aster
  */
 public class createLobby extends MahjongServlet {
@@ -58,8 +57,6 @@ public class createLobby extends MahjongServlet {
          if (sapiManager.getRules().contains(rule)) {
             request.setAttribute("selectedRule", rule);
         }
-
-
 
         if (playTime != null & stealTime != null) {
             request.setAttribute("time", stealTime);

@@ -1,0 +1,233 @@
+body{
+	display: grid;
+	grid-template-areas:
+				'topPlayer topPlayer topPlayer'
+				'leftPlayer playArea rightPlayer'
+				'bottomPlayer bottomPlayer bottomPlayer';
+	grid-template-columns: 10vw auto 10vw;	
+	grid-template-rows : 15vh 55vh 15vh;
+	height: 100%;
+	width: 100%;
+	margin:0px;
+        background-image: url("./boardSVG/mahjongBoard.svg");
+        background-size: cover;
+
+        
+}
+a {
+    color: black;
+}
+
+#homeIcon {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+#reminderIcon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+body > div {
+	margin:0px;
+}
+
+#playArea {
+    grid-area: playArea;
+    display: grid;
+    grid-template-areas: 'topWall   topWall topWall'
+        'leftWall  discardArea  rightWall'
+        'bottomWall   bottomWall bottomWall';
+    grid-template-columns: 4.5vw 30vw 4.5vw;	
+	grid-template-rows : 4.5vh auto 4.5vh;
+    height: 100%;
+    width: 50%;
+    margin: auto;
+}
+
+#discardArea {
+    grid-area: discardArea;
+    display: grid;
+    grid-template-areas: 'topDiscardArea topDiscardArea topDiscardArea' 
+        'leftDiscardArea voidArea rightDiscardArea'
+        'bottomDiscardArea bottomDiscardArea bottomDiscardArea';
+    grid-template-columns: 4.5vw auto 4.5vw;	
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+}
+
+.playerTiles {
+  float:left;
+}
+
+.hide {
+    display: none;
+}
+
+li{
+    list-style:none;
+}
+#topHand {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    margin-top: 3vh;
+}
+#bottomHand {
+    margin-left: auto;
+    margin-right: auto;
+    width: 65%;
+}
+
+
+
+#leftHand, #rightHand{
+    height: 80%;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#leftHand{
+    margin-left: 3vw;
+}
+
+#rightHand{
+    margin-left: 3vw;
+}
+
+
+#topDiscardArea {
+    grid-area: topDiscardArea;
+    width: 80%;
+    margin: auto;
+}
+
+#rightDiscardArea {
+    grid-area: rightDiscardArea;
+    height: 80%;
+    margin: auto;
+}
+
+#bottomDiscardArea {
+    grid-area: bottomDiscardArea;
+    width: 80%;
+    margin: auto;
+}
+
+#leftDiscardArea {
+    grid-area: leftDiscardArea;
+    height: 80%;
+    margin: auto;
+}
+
+#voidArea{
+    grid-area: voidArea;
+}
+
+#topPlayer{
+	grid-area:topPlayer;
+}
+
+#rightPlayer{
+    grid-area:rightPlayer;
+    display: flex;
+}
+
+#leftPlayer{
+    grid-area:leftPlayer;
+    display: flex;
+}
+
+#bottomPlayer{
+    grid-area:bottomPlayer;
+    padding-top: 10vh;
+}
+
+#topWall{
+    grid-area:topWall;
+    padding-left: 5.5vw;
+}
+
+#leftWall{
+    grid-area:leftWall;
+}
+
+#rightWall {
+    grid-area: rightWall;
+}
+
+#bottomWall {
+    grid-area: bottomWall;
+    padding-left: 5.5vw;
+}
+
+.hand,.discardZone{
+	text-align: center;
+}
+
+
+
+
+ #leftMeld{
+  display: flex;
+  flex-direction: column-reverse;
+  margin-left : 2.5vw;
+ }
+
+
+ #rightMeld{
+    display: flex;
+    flex-direction: column;
+}
+#rightSupreme{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5vh;
+}
+
+#rightMeldBlock{
+    display: flex;
+    flex-direction: column;
+}
+
+#leftMeldBlock{
+    display: flex;
+    flex-direction: column;
+    bottom: 0px;
+}
+
+#leftSupreme{
+    display: flex;
+    flex-direction: column-reverse;
+    margin-left : 2.5vw;
+    margin-top: 1.5vh;
+}
+
+
+#topMeldBlock{
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    padding-left: 12%;
+    margin: 0;
+}
+
+#topSupreme{
+    margin-left: 1.5vw;
+}
+
+#bottomMeldBlock{
+    display: flex;
+    flex-direction: row-reverse;
+    text-align: right;
+    padding-right: 12%;
+    margin: 0;
+}
+
+#bottomSupreme{
+    margin-right: 1.5vw;
+}
