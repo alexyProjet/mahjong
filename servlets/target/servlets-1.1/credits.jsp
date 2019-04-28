@@ -16,40 +16,45 @@
 <body>
 	<%@ include file="buttons.jsp" %>
 	<h1 id="title">Credits</h1>
-	<div id="authors">
-		<div class="authorName">Allain LOUIS</div>
-		<div class="authorName">Alexandre AMOURIQ</div>
-		<div class="authorName">Jules AUDURIER</div>
-		<div class="authorName">Youri BERNARD</div>
-		<div class="authorName">Mael BERRIGAUD</div>
-		<div class="authorName">Ewen BOUDER</div>
-		<div class="authorName">Charles COGOLUEGNES</div>
-		<div class="authorName">Allan COMISSO</div>
-		<div class="authorName">Anton COSNEFROY</div>
-		<div class="authorName">Liam COTTE</div>
-		<div class="authorName">Arthur DEMBIERMONT</div>
-		<div class="authorName">Alexy DUHAMEL</div>
-		<div class="authorName">Valentin DURAND</div>
-		<div class="authorName">Tristan FURNO</div>
-		<div class="authorName">Pierre GOUJON</div>
-		<div class="authorName">Johan GOUSSET</div>
-		<div class="authorName">Maxime GUILLAUME</div>
-		<div class="authorName">Pierre GURIEL-FARDEL</div>
-		<div class="authorName">Maxime HAMON</div>
-		<div class="authorName">Nesrine HANTAT</div>
-		<div class="authorName">Samuel LE BERRE</div>
-		<div class="authorName">Maël LE GAL</div>
-		<div class="authorName">Clement MALLEJAC</div>
-		<div class="authorName">Vincent MAURICE</div>
-		<div class="authorName">Nathan MINGOUBE</div>
-		<div class="authorName">Abdelilah MOULIDA</div>
-		<div class="authorName">Cynthia PIQUET</div>
-		<div class="authorName">Goulven POULALIOU</div>
-		<div class="authorName">Faroud SADIKOU</div>
-		<div class="authorName">Florent SIMONET</div>
-		<div class="authorName">Aliyou SYLLA</div>
-		<div class="authorName">Guenole THEVENARD</div>
-		<div class="authorName">Romann YVINEC</div>
+	<div id="credits">
+            <h2 id="team">-- DAO - Fichiers --</h2>
+		<div class="authorName">Nesrine Hantat</div>
+		<div class="authorName">Aliyou Sylla</div>
+            <h2 id="team">-- DAO - SGBD --</h2>
+		<div class="authorName">Louis Allain</div>
+		<div class="authorName">Faroud Sadikou</div>
+            <h2 id="team">-- Engine --</h2>
+		<div class="authorName">Charles Cogoluegnes</div>
+		<div class="authorName">Anton Cosnefroy</div>
+		<div class="authorName">Tristan Furno</div>
+		<div class="authorName">Maxime Guillaume</div>
+		<div class="authorName">Pierre Guriel--Fardel</div>
+		<div class="authorName">Samuel Le Berre</div>
+		<div class="authorName">Clément Mallejac</div>
+		<div class="authorName">Abdelilah Moulida</div>
+            <h2 id="team">-- IA --</h2>
+		<div class="authorName">Arthur Dembiermont</div>
+		<div class="authorName">Valentin Durand</div>
+		<div class="authorName">Maël Le Gal</div>
+		<div class="authorName">Vincent Maurice</div>
+		<div class="authorName">Guenole Thevenard</div>
+            <h2 id="team">-- Interface --</h2>
+		<div class="authorName">Jules Audurier</div>
+		<div class="authorName">Allan Comisso</div>
+		<div class="authorName">Liam Cotte</div>
+		<div class="authorName">Alexy Duhamel</div>
+		<div class="authorName">Maxime Hamon</div>
+		<div class="authorName">Florent Simonet</div>
+            <h2 id="team">-- Réseau --</h2>
+		<div class="authorName">Alexandre Amouriq</div>
+		<div class="authorName">Mael Berrigaud</div>
+		<div class="authorName">Pierre Goujon</div>
+            <h2 id="team">-- SAPI --</h2>
+		<div class="authorName">Youri Bernard</div>
+		<div class="authorName">Johan Gousset</div>
+		<div class="authorName">Romann Yvinec</div>
+            <h2 id="team">-- Tutoriel --</h2>
+		<div class="authorName">Ewen Bouder</div>
 	</div>
 </body>
 </html>
@@ -60,30 +65,28 @@
 	right: 10px;
 	top: 10px;
 }
-
 a{
 	color: black;
 }
-
 #homeIcon {
 	position: absolute;
 	left: 10px;
 	top: 10px;
 }
-
 #title{
 	display: absolute;
 	text-align: center;
 	margin-top: 17vh;
-
 }
-
-#authors{
+#credits{
+	position: absolute;
+	left: 44.5vw;
 	text-align: center;
 }
-
+#team{
+	text-align: center;
+}
 .authorName{
 	text-align: center;
 }
-
 </style>

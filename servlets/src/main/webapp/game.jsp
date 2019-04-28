@@ -94,7 +94,7 @@
             });
 
         </script>
-        <%@ include file="buttons.jsp" %>
+        <a href="/accueil"><i id="homeIcon" class="fas fa-sign-out-alt fa-5x"></i></a>
 
         <a href="greenbook_en.pdf" target="_blank"><i id="reminderIcon" class="fas fa-info fa-5x"></i></a>
 

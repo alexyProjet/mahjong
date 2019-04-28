@@ -43,7 +43,6 @@
             });
         </script>
 
-        <a href="/displayParameters"><i id="parametersIcon" class="fas fa-cog fa-5x"></i></a>
         <a href="/accueil"><i id="homeIcon" class="fas fa-sign-out-alt fa-5x"></i></a>
 
         <h1 id="title">${lobby.getName()}</h1>
@@ -179,20 +178,10 @@
             };
         }
         ;
-        $(function () {
-            $('a').on('click', function () {
-                localStorage.setItem('restoreURL', $(location).attr('href'));
-            });
-        });
 
 
     </script>
     <style>
-        #parametersIcon {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-        }
 
         a{
             color: black;
