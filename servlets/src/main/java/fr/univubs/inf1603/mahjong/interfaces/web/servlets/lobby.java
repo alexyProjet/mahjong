@@ -6,7 +6,6 @@
 package fr.univubs.inf1603.mahjong.interfaces.web.servlets;
 
 import fr.univubs.inf1603.mahjong.ai.BotDifficulties;
-import fr.univubs.inf1603.mahjong.ai.Difficulty;
 import fr.univubs.inf1603.mahjong.interfaces.controllertest.ControllerTest;
 import fr.univubs.inf1603.mahjong.sapi.impl.HumanInLobbyImpl;
 import fr.univubs.inf1603.mahjong.sapi.impl.SimpleRuleImpl;

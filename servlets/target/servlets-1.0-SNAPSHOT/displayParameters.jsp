@@ -1,3 +1,4 @@
+
 <%-- 
     Document   : displayParameters
     Created on : 24 avr. 2019, 21:25:56
@@ -19,6 +20,11 @@
 	<a href=""><i id="backIcon" class="fas fa-arrow-left fa-5x"></i></a>
 	<h1 id="title">Display Parameters</h1>
 	<div id="displayParameters">
+                <div id="playerId" class="block">
+                    <label class="parametersLabel">Your username:</label>
+                    <input class="parametersText" type="text" name="playerId" value="" />
+                </div>
+            
 		<div id="language" class="block">
 			<label class="parametersLabel">Language</label>
 			<select class="parametersButton" placeholder="Language">
@@ -71,6 +77,14 @@ a{
 }
 
 .parametersButton{
+	margin: 10px;
+	height: 7vh;
+	width: 20vw;
+	text-align: center;
+	grid-column: 2;
+}
+
+.parametersText{
 	margin: 10px;
 	height: 7vh;
 	width: 20vw;

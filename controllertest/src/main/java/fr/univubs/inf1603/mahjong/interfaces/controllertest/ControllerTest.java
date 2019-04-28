@@ -6,7 +6,6 @@
 package fr.univubs.inf1603.mahjong.interfaces.controllertest;
 
 import fr.univubs.inf1603.mahjong.ai.BotDifficulties;
-import fr.univubs.inf1603.mahjong.ai.Difficulty;
 import fr.univubs.inf1603.mahjong.exceptions.UsedNameException;
 import fr.univubs.inf1603.mahjong.sapi.HumanInLobby;
 import fr.univubs.inf1603.mahjong.sapi.Lobby;
