@@ -91,6 +91,16 @@
 
 
                 majZoom();
+
+
+
+                $("#sortable > li").each(function () {
+                    $(this).on("contextmenu", function () {
+                        console.log("click" + this);
+                        $(this).toggleClass("meldHighlight");
+                        return false;
+                    });
+                });
             });
 
         </script>
@@ -561,6 +571,10 @@
 
         <div id="bottomPlayer">
             <div id="bottomMeldBlock">
+                <div id = "action">
+                    <img src="./buttonsSVG/MeldButton.svg" class="actionButtons" id="meldButton"/>
+                    <img src="./buttonsSVG/MahjongButton.svg" class="actionButtons" id="mahjongButton"/>
+                </div>
                 <div id="bottomMeld">
                     <div id="meldBottom0">
                         <c:forEach items="${myMeldZone0.getTiles()}" var="tile">
