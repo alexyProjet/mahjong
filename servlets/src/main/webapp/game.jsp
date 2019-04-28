@@ -29,7 +29,7 @@
                         html = $(this).attr('src');
                         if (zoomOn) {
                             $('#zoomWindow').html('<img id="zoomTile" src="' + html + '" />');
-                            $('#zoomWindow').removeClass('hide').wait(100).addClass('hide');
+                            $('#zoomWindow').removeClass('hide').wait(500).addClass('hide');
                         }
                     });
                 }
@@ -97,6 +97,20 @@
         <a href="/accueil"><i id="homeIcon" class="fas fa-sign-out-alt fa-5x"></i></a>
 
         <a href="greenbook_en.pdf" target="_blank"><i id="reminderIcon" class="fas fa-info fa-5x"></i></a>
+
+        <c:if test="{myWind==Wind.SOUTH}">
+            <img id="compass" src="./miscSVG/compass.svg">
+        </c:if>
+        <c:if test="{myWind==Wind.EST}">
+            <img id="compass" class="right" src="./miscSVG/compass.svg">
+        </c:if>
+        <c:if test="{myWind==Wind.WEST}">
+            <img id="compass" class="left" src="./miscSVG/compass.svg">
+        </c:if>
+        <c:if test="{myWind==Wind.NORTH}">
+            <img id="compass" class="bottom" src="./miscSVG/compass.svg">
+        </c:if>
+
 
         <div id="zoomWindow" class="hide">
             <div id="zoom"></div>
@@ -220,9 +234,30 @@
                     </div>
                 </div>
                 <div id="topSupreme">
-                    <img class="tileMeld tile" src="./tilesSVG/F1.svg" />
-                    <img class="tileMeld tile" src="./tilesSVG/S2.svg" />
-                    <img class="tileMeld tile" src="./tilesSVG/S3.svg" />
+                    <c:if test="{myWind==Wind.EAST}">
+                        <c:forEach items="${supremeZoneWest.getTiles()}" var="tile">
+                            <img id="${tile.getTileID()}" class="tileMeld  tile" src="./tilesSVG/${tile.getName()}.svg" />
+                        </c:forEach>
+                    </c:if>
+
+                    <c:if test="{myWind==Wind.WEST}">
+                        <c:forEach items="${supremeZoneEast.getTiles()}" var="tile">
+                            <img id="${tile.getTileID()}" class="tileMeld  tile" src="./tilesSVG/${tile.getName()}.svg" />
+                        </c:forEach>
+                    </c:if>
+
+                    <c:if test="{myWind==Wind.NORTH}">
+                        <c:forEach items="${supremeZoneSouth.getTiles()}" var="tile">
+                            <img id="${tile.getTileID()}" class="tileMeld  tile" src="./tilesSVG/${tile.getName()}.svg" />
+                        </c:forEach>
+                    </c:if>
+
+
+                    <c:if test="{myWind==Wind.SOUTH}">
+                        <c:forEach items="${supremeZoneNorth.getTiles()}" var="tile">
+                            <img id="${tile.getTileID()}" class="tileMeld  tile" src="./tilesSVG/${tile.getName()}.svg" />
+                        </c:forEach>
+                    </c:if>
                 </div>
             </div>
         </div>
@@ -346,9 +381,30 @@
                     </div>
                 </div>
                 <div id="leftSupreme">
-                    <img class="rotateMeld tile" src="./tilesSVG/F1.svg" />
-                    <img class="rotateMeld tile" src="./tilesSVG/S2.svg" />
-                    <img class="rotateMeld tile" src="./tilesSVG/S3.svg" />
+                    <c:if test="{myWind==Wind.EAST}">
+                        <c:forEach items="${supremeZoneSouth.getTiles()}" var="tile">
+                            <img id="${tile.getTileID()}" class="rotateMeld tile" src="./tilesSVG/${tile.getName()}.svg" />
+                        </c:forEach>
+                    </c:if>
+
+                    <c:if test="{myWind==Wind.WEST}">
+                        <c:forEach items="${supremeZoneNorth.getTiles()}" var="tile">
+                            <img id="${tile.getTileID()}" class="rotateMeld tile" src="./tilesSVG/${tile.getName()}.svg" />
+                        </c:forEach>
+                    </c:if>
+
+                    <c:if test="{myWind==Wind.NORTH}">
+                        <c:forEach items="${supremeZoneEast.getTiles()}" var="tile">
+                            <img id="${tile.getTileID()}" class="rotateMeld tile" src="./tilesSVG/${tile.getName()}.svg" />
+                        </c:forEach>
+                    </c:if>
+
+
+                    <c:if test="{myWind==Wind.SOUTH}">
+                        <c:forEach items="${supremeZoneWest.getTiles()}" var="tile">
+                            <img id="${tile.getTileID()}" class="rotateMeld tile" src="./tilesSVG/${tile.getName()}.svg" />
+                        </c:forEach>
+                    </c:if>
                 </div>
             </div>
         </div>
@@ -357,9 +413,30 @@
         <div id="rightPlayer">
             <div id="rightMeldBlock">
                 <div id="rightSupreme">
-                    <img class="rotateMeld tile" src="./tilesSVG/F1.svg" />
-                    <img class="rotateMeld tile" src="./tilesSVG/S2.svg" />
-                    <img class="rotateMeld tile" src="./tilesSVG/S3.svg" />
+                    <c:if test="{myWind==Wind.EAST}">
+                        <c:forEach items="${supremeZoneNorth.getTiles()}" var="tile">
+                            <img id="${tile.getTileID()}" class="rotateMeld tile" src="./tilesSVG/${tile.getName()}.svg" />
+                        </c:forEach>
+                    </c:if>
+
+                    <c:if test="{myWind==Wind.WEST}">
+                        <c:forEach items="${supremeZoneSouth.getTiles()}" var="tile">
+                            <img id="${tile.getTileID()}" class="rotateMeld tile" src="./tilesSVG/${tile.getName()}.svg" />
+                        </c:forEach>
+                    </c:if>
+
+                    <c:if test="{myWind==Wind.NORTH}">
+                        <c:forEach items="${supremeZoneWest.getTiles()}" var="tile">
+                            <img id="${tile.getTileID()}" class="rotateMeld tile" src="./tilesSVG/${tile.getName()}.svg" />
+                        </c:forEach>
+                    </c:if>
+
+
+                    <c:if test="{myWind==Wind.SOUTH}">
+                        <c:forEach items="${supremeZoneEast.getTiles()}" var="tile">
+                            <img id="${tile.getTileID()}" class="rotateMeld tile" src="./tilesSVG/${tile.getName()}.svg" />
+                        </c:forEach>
+                    </c:if>
 
                 </div>
                 <div id="rightMeld">
@@ -507,9 +584,9 @@
                     </div>
                 </div>
                 <div id="bottomSupreme">
-                    <img class="tileMeld tile" src="./tilesSVG/F1.svg" />
-                    <img class="tileMeld tile" src="./tilesSVG/S2.svg" />
-                    <img class="tileMeld tile" src="./tilesSVG/S3.svg" />
+                    <c:forEach items="${mySupremeZone.getTiles()}" var="tile">
+                        <img id="${tile.getTileID()}" class="tileMeld tile" src="./tilesSVG/${tile.getName()}.svg" />
+                    </c:forEach>
 
                 </div>
             </div>
