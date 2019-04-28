@@ -20,90 +20,146 @@
     </head>
 
     <body>
-        <script>
+         <script>
 
-            function majZoom() {//Zoom 
-                let tiles = $('.tile');
-                for (tile of tiles) {
-                    $(tile).on("mouseover", function () {
-                        html = $(this).attr('src');
-                        if (zoomOn) {
-                            $('#zoomWindow').html('<img id="zoomTile" src="' + html + '" />');
-                            $('#zoomWindow').removeClass('hide').wait(500).addClass('hide');
-                        }
-                    });
-                }
-            }
-
-            function updateWall() {
-                let elems = $('.tileWall,.rotateWall');
-                for (elem of elems) {
-                    if ($(elem).hasClass('double tile'))
-                        $(elem).attr("src", "./tilesSVG/XX.svg");
-                    else if ($(elem).hasClass('single tile'))
-                        $(elem).attr("src", "./tilesSVG/XX2.svg");
-                }
-            }
-
-            $(function () {
-                /*
-                 if (typeof localStorage.getItem('playerHand') !== 'undefined' && localStorage.getItem('playerHand') !== null)
-                 $('#bottomHand').html(localStorage.getItem('playerHand'));
-                 */
-                $("#sortable").sortable({
-                    scroll: false
-                });
-                /*
-                 $("#sortable").on("sortupdate", function (event, ui) {
-                 localStorage.setItem('playerHand', $('#bottomHand').html());
-                 });
-                 */
-                $("#bottomDiscardArea").droppable({
-                    drop: function (event, ui) {
-                        if ($(ui.draggable).hasClass("ui-sortable-helper")) {
-                            var itemText = $(ui.draggable);
-                            $('#bottomDiscardArea').html($('#bottomDiscardArea').html() + $(itemText).html().replace("tilePlayer", "tileDiscard"));
-                            $(ui.draggable).empty();
-                            majZoom();
-                        }
+        function majZoom() {//Zoom 
+            let tiles = $('.tile');
+            for (tile of tiles) {
+                $(tile).on("mouseover", function () {
+                    html = $(this).attr('src');
+                    if (zoomOn) {
+                        $('#zoomWindow').html('<img id="zoomTile" src="' + html + '" />');
+                        $('#zoomWindow').removeClass('hide').wait(300).addClass('hide');
                     }
                 });
+            }
+        }
 
+        function updateWall() {
+            let elems = $('.tileWall,.rotateWall');
+            for (elem of elems) {
+                if ($(elem).hasClass('double tile'))
+                    $(elem).attr("src", "./tilesSVG/XX.svg");
+                else if ($(elem).hasClass('single tile'))
+                    $(elem).attr("src", "./tilesSVG/XX2.svg");
+            }
+        }
 
-
-
-                updateWall();
-
-
-                zoomOn = false;
-                document.addEventListener('keydown', function (e) {
-                    if (e.key === 'e') {
-                        if (zoomOn === true) {
-                            zoomOn = false;
-                            Swal.fire({type: 'error', title: 'Zoom off', showConfirmButton: false, timer: 250});
-                        } else {
-                            zoomOn = true;
-                            Swal.fire({type: 'success', title: 'Zoom on', showConfirmButton: false, timer: 250});
-                        }
-                    }
-                });
-
-
-
-                majZoom();
-
-
-
-                $("#sortable > li").each(function () {
-                    $(this).on("contextmenu", function () {
-                        console.log("click" + this);
-                        $(this).toggleClass("meldHighlight");
-                        return false;
-                    });
+        function majSelectable() {
+            $("#sortable > li > img").each(function () {
+                $(this).on("contextmenu", function () {
+                    $(this).toggleClass("meldHighlight");
+                    return false;
                 });
             });
+        }
 
-        </script>
+        $(function () {
+            /*
+             if (typeof localStorage.getItem('playerHand') !== 'undefined' && localStorage.getItem('playerHand') !== null)
+             $('#bottomHand').html(localStorage.getItem('playerHand'));
+             */
+            $("#sortable").sortable({
+                scroll: false
+            });
+            /*
+             $("#sortable").on("sortupdate", function (event, ui) {
+             localStorage.setItem('playerHand', $('#bottomHand').html());
+             });
+             */
+            $("#bottomDiscardArea").droppable({
+                drop: function (event, ui) {
+                    if ($(ui.draggable).hasClass("ui-sortable-helper")) {
+                        var itemText = $(ui.draggable);
+                        let idTiles = $(ui.draggable).children()[0].getAttribute("id");
+                        $('#bottomDiscardArea').html($('#bottomDiscardArea').html() + $(itemText).html().replace("tilePlayer", "tileDiscard"));
+                        $(ui.draggable).empty();
+                        majZoom();
+                        let zone = 'bottomDiscardArea';
+                        let Http = new XMLHttpRequest();
+                        let url = '/game?player=${myPlayer.getUUID().toString()}&tiles=' + idTiles + '&zoneArrivee=' + zone;
+                        console.log(url);
+                        Http.open("POST", url, true);
+                        Http.onreadystatechange = (e) => {
+                            console.log(e);
+                        };
+                        Http.send();
+                    }
+                }
+            });
+
+
+
+
+            updateWall();
+
+
+            zoomOn = false;
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'e') {
+                    if (zoomOn === true) {
+                        zoomOn = false;
+                        Swal.fire({ type: 'error', title: 'Zoom off', showConfirmButton: false, timer: 250 });
+                    } else {
+                        zoomOn = true;
+                        Swal.fire({ type: 'success', title: 'Zoom on', showConfirmButton: false, timer: 250 });
+                    }
+                }
+            });
+
+
+
+            majZoom();
+
+            majSelectable();
+
+            $("#meldButton").on("click", function (event) {
+                let meld = $(".meldHighlight");
+
+                let zone;
+                if ($('#meldBottom0')[0].innerHTML.trim() == '') {
+                    zone = 'meldBottom0';
+                    meld.prependTo("#meldBottom0");
+                }
+                else if ($('#meldBottom1')[0].innerHTML.trim() == '') {
+                    zone = 'meldBottom1';
+                    meld.prependTo("#meldBottom1");
+                }
+                else if ($('#meldBottom2')[0].innerHTML.trim() == '') {
+                    zone = 'meldBottom2';
+                    meld.prependTo("#meldBottom2");
+                }
+                else if ($('#meldBottom3')[0].innerHTML.trim() == '') {
+                    zone = 'meldBottom3';
+                    meld.prependTo("#meldBottom3");
+                }
+
+
+                let idTiles = '';
+                for (elem of meld) {
+                    idTiles += $(elem).attr('id') + ',';
+                }
+                idTiles = idTiles.substring(0, idTiles.length - 1);
+                let Http = new XMLHttpRequest();
+                let url = '/game?player=${myPlayer.getUUID().toString()}&tiles=' + idTiles + '&zoneArrivee=' + zone;
+                console.log(url);
+
+                if (idTiles != '') {
+                    Http.open("POST", url, true);
+                    Http.onreadystatechange = (e) => {
+                        console.log(e);
+                    };
+                    Http.send();
+                }
+
+
+                meld.toggleClass("meldHighlight", false);
+                meld.toggleClass("tilePlayer", false);
+                meld.toggleClass("tileMeld", true);
+            });
+        });
+
+    </script>
         <a href="/accueil"><i id="homeIcon" class="fas fa-sign-out-alt fa-5x"></i></a>
 
         <a href="greenbook_en.pdf" target="_blank"><i id="reminderIcon" class="fas fa-info fa-5x"></i></a>

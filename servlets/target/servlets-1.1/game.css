@@ -268,3 +268,11 @@ li{
 #bottomSupreme{
     margin-right: 1.5vw;
 }
+
+#bottomMeld{
+    display: flex;
+}
+
+#topMeld{
+    display: flex;
+}
