@@ -16,12 +16,6 @@ body{
     top: 10px;
 }
 
-#reminderIcon {
-    position: absolute;
-    left: 10px;
-    bottom: 10px;
-}
-
 a {
     color: black;
 }
@@ -30,6 +24,11 @@ a {
     position: absolute;
     left: 10px;
     top: 10px;
+}
+#reminderIcon {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
 }
 
 body > div {
@@ -173,17 +172,6 @@ li{
 }
 
 
-#bottomMeld{
-   text-align: right;
-   padding-right: 12%;
-   margin: 0;
-}
-
-#topMeld{
-    text-align: left;
-    padding-left: 12%;
-    margin: 0;
- }
 
 
  #leftMeld{
@@ -192,7 +180,56 @@ li{
   margin-left : 2.5vw;
  }
 
+
  #rightMeld{
     display: flex;
     flex-direction: column;
+}
+#rightSupreme{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5vh;
+}
+
+#rightMeldBlock{
+    display: flex;
+    flex-direction: column;
+}
+
+#leftMeldBlock{
+    display: flex;
+    flex-direction: column;
+    bottom: 0px;
+}
+
+#leftSupreme{
+    display: flex;
+    flex-direction: column-reverse;
+    margin-left : 2.5vw;
+    margin-top: 1.5vh;
+}
+
+
+#topMeldBlock{
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    padding-left: 12%;
+    margin: 0;
+}
+
+#topSupreme{
+    margin-left: 1.5vw;
+}
+
+#bottomMeldBlock{
+    display: flex;
+    flex-direction: row-reverse;
+    text-align: right;
+    padding-right: 12%;
+    margin: 0;
+}
+
+#bottomSupreme{
+    margin-right: 1.5vw;
 }
