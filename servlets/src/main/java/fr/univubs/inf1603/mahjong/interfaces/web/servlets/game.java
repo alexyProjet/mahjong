@@ -96,7 +96,6 @@ public class game extends MahjongServlet {
                 request.setAttribute("players", game.getPlayers());
 
                 BoardView board = game.getBoard(player);
-
                 request.setAttribute(gameId, board);
 
                 //We define the common wall
@@ -104,9 +103,11 @@ public class game extends MahjongServlet {
 
                 //We define the attrributes of our player
                 request.setAttribute("myPlayer", player);
+                /*
                 request.setAttribute("myHand", board.getHand(player.getWind()));
                 request.setAttribute("myWind", player.getWind());
-                request.setAttribute("myPoints", game.getPlayerPoints(player));
+                
+                //request.setAttribute("myPoints", game.getPlayerPoints(player));
                 request.setAttribute("myMeldZone0", board.getMeldZone0(player.getWind()));
                 request.setAttribute("myMeldZone1", board.getMeldZone1(player.getWind()));
                 request.setAttribute("myMeldZone2", board.getMeldZone2(player.getWind()));
@@ -114,6 +115,7 @@ public class game extends MahjongServlet {
                 request.setAttribute("myDiscardZone", board.getDiscardZone(player.getWind()));
                 request.setAttribute("mySupremeZone", board.getSupremeZone(player.getWind()));
                 request.setAttribute("myMoves", player.getMoves());
+                */
 
                 //We define the attribute of east wind
                 request.setAttribute("meldZoneEast0", board.getMeldZone0(Wind.EAST));
@@ -145,9 +147,9 @@ public class game extends MahjongServlet {
                 request.setAttribute("meldZoneNorth2", board.getMeldZone2(Wind.NORTH));
                 request.setAttribute("meldZoneNorth3", board.getMeldZone3(Wind.NORTH));
                 request.setAttribute("discardZoneNorth", board.getDiscardZone(Wind.NORTH));
-                request.setAttribute("supremeZoneNorth", board.getSupremeZone(player.getWind()));
+                request.setAttribute("supremeZoneNorth", board.getSupremeZone(Wind.NORTH));
 
-            } catch (DestroyedGameException | PlayerNotInGameException ex) {
+            } catch (DestroyedGameException ex) {
                 Logger.getLogger(game.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
