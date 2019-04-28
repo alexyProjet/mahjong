@@ -77,7 +77,7 @@
                         majZoom();
                         let zone = 'bottomDiscardArea';
                         let Http = new XMLHttpRequest();
-                        let url = '/game?player=${myPlayer.getUUID().toString()}&tiles=' + idTiles + '&zoneArrivee=' + zone;
+                        let url = '/game?playerId=${myPlayer.getUUID().toString()}&tilesId=' + idTiles + '&zoneArrivee=' + zone;
                         console.log(url);
                         Http.open("POST", url, true);
                         Http.onreadystatechange = (e) => {
@@ -141,7 +141,7 @@
                 }
                 idTiles = idTiles.substring(0, idTiles.length - 1);
                 let Http = new XMLHttpRequest();
-                let url = '/game?player=${myPlayer.getUUID().toString()}&tiles=' + idTiles + '&zoneArrivee=' + zone;
+                let url = '/game?playerId=${myPlayer.getUUID().toString()}&tilesId=' + idTiles + '&zoneArrivee=' + zone;
                 console.log(url);
 
                 if (idTiles != '') {
