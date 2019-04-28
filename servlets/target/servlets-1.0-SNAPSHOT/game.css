@@ -9,6 +9,8 @@ body{
 	height: 100%;
 	width: 100%;
 	margin:0px;
+        background-image: url("./boardSVG/mahjongBoard.svg");
+        background-size: cover;
 }
 #parametersIcon {
     position: absolute;

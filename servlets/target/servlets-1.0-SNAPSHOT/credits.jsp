@@ -16,66 +16,45 @@
 <body>
 	<%@ include file="buttons.jsp" %>
 	<h1 id="title">Credits</h1>
-	<div id="authors">
-
-		<div class="authorName">ALLON</div>
-		<div class="authorName">LEVY</div>
-		<div class="authorName">BACARD</div>
-		<div class="authorName">HUGO</div>
-		<div class="authorName">BAKER</div>
-		<div class="authorName">MATTHEW</div>
-		<div class="authorName">BALWE</div>
-		<div class="authorName">CHETAN</div>
-		<div class="authorName">BELAIR</div>
-		<div class="authorName">LUC</div>
-		<div class="authorName">BERKOVICH</div>
-		<div class="authorName">VLADIMIR</div>
-		<div class="authorName">BERTRAND</div>
-		<div class="authorName">BENOIT</div>
-		<div class="authorName">BHOWIK</div>
-		<div class="authorName">PRASENJIT</div>
-		<div class="authorName">BLOSSIER</div>
-		<div class="authorName">THOMAS</div>
-		<div class="authorName">BOUAYAD</div>
-		<div class="authorName">ALEXANDRE</div>
-		<div class="authorName">BOUSCAREN</div>
-		<div class="authorName">BRASCA</div>
-		<div class="authorName">RICCARDO</div>
-		<div class="authorName">BRIEND</div>
-		<div class="authorName">JEA</div>
-		<div class="authorName">BRUGALLE</div>
-		<div class="authorName">ERWAN</div>
-		<div class="authorName">BYRON</div>
-		<div class="authorName">DYLAN</div>
-		<div class="authorName">BYSZEWSKI</div>
-		<div class="authorName">CEBALLOS</div>
-		<div class="authorName">CESAR</div>
-		<div class="authorName">CHATZIDZAKIS</div>
-		<div class="authorName">ZOE</div>
-		<div class="authorName">CHEN</div>
-		<div class="authorName">KE</div>
-		<div class="authorName">CHEN</div>
-		<div class="authorName">MIAOFEN</div>
-		<div class="authorName">CHRISTENSEN</div>
-		<div class="authorName">CHRISTIAN</div>
-		<div class="authorName">CHRISTIE</div>
-		<div class="authorName">AARON</div>
-		<div class="authorName">COTTERIL</div>
-		<div class="authorName">ETHAN</div>
-		<div class="authorName">CUETO</div>
-		<div class="authorName">MARIA ANGELICA</div>
-		<div class="authorName">CUNNIGHAM</div>
-		<div class="authorName">CLIFTON</div>
-		<div class="authorName">DEL BLANCO MRANAA</div>
-		<div class="authorName">JESUS M.</div>
-		<div class="authorName">DELLO STRITTO</div>
-		<div class="authorName">PIETRO</div>
-		<div class="authorName">DISEGNI</div>
-		<div class="authorName">DANIEL</div>
-		<div class="authorName">DOCAMPO</div>
-		<div class="authorName">Roi</div>
-		<div class="authorName">DOSPINESCU</div>
-		<div class="authorName">GABRIEL</div>
+	<div id="credits">
+            <h2 id="team">-- DAO - Fichiers --</h2>
+		<div class="authorName">Nesrine Hantat</div>
+		<div class="authorName">Aliyou Sylla</div>
+            <h2 id="team">-- DAO - SGBD --</h2>
+		<div class="authorName">Louis Allain</div>
+		<div class="authorName">Faroud Sadikou</div>
+            <h2 id="team">-- Engine --</h2>
+		<div class="authorName">Charles Cogoluegnes</div>
+		<div class="authorName">Anton Cosnefroy</div>
+		<div class="authorName">Tristan Furno</div>
+		<div class="authorName">Maxime Guillaume</div>
+		<div class="authorName">Pierre Guriel--Fardel</div>
+		<div class="authorName">Samuel Le Berre</div>
+		<div class="authorName">Clément Mallejac</div>
+		<div class="authorName">Abdelilah Moulida</div>
+            <h2 id="team">-- IA --</h2>
+		<div class="authorName">Arthur Dembiermont</div>
+		<div class="authorName">Valentin Durand</div>
+		<div class="authorName">Maël Le Gal</div>
+		<div class="authorName">Vincent Maurice</div>
+		<div class="authorName">Guenole Thevenard</div>
+            <h2 id="team">-- Interface --</h2>
+		<div class="authorName">Jules Audurier</div>
+		<div class="authorName">Allan Comisso</div>
+		<div class="authorName">Liam Cotte</div>
+		<div class="authorName">Alexy Duhamel</div>
+		<div class="authorName">Maxime Hamon</div>
+		<div class="authorName">Florent Simonet</div>
+            <h2 id="team">-- Réseau --</h2>
+		<div class="authorName">Alexandre Amouriq</div>
+		<div class="authorName">Mael Berrigaud</div>
+		<div class="authorName">Pierre Goujon</div>
+            <h2 id="team">-- SAPI --</h2>
+		<div class="authorName">Youri Bernard</div>
+		<div class="authorName">Johan Gousset</div>
+		<div class="authorName">Romann Yvinec</div>
+            <h2 id="team">-- Tutoriel --</h2>
+		<div class="authorName">Ewen Bouder</div>
 	</div>
 </body>
 </html>
@@ -104,9 +83,13 @@ a{
 
 }
 
-#authors{
+#credits{
 	position: absolute;
 	left: 44.5vw;
+	text-align: center;
+}
+
+#team{
 	text-align: center;
 }
 
