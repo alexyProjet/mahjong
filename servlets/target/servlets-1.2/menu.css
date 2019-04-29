@@ -1,0 +1,43 @@
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    background-image: url("./miscSVG/background.svg");
+    background-size: cover;
+}
+
+
+#parametersIcon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+a{
+    color: black
+}
+
+#menu{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 10%;
+    
+}
+
+.menuButton{
+    margin: 10px;
+    height: 7vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#title{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+    height: 20vh;
+    margin-top: 10vh;
+}
+

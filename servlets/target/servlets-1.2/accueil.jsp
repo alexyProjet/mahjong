@@ -10,17 +10,17 @@
     <head>
         <title>Menu Mahjong</title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-        <link rel="stylesheet" href="menu.css" >
+        <link rel="stylesheet" href="menu.css">
     </head>
     <body>
         <a href="/displayParameters"><i id="parametersIcon" class="fas fa-cog fa-5x"></i></a>
-        <h1 id="title">Mahjong Online</h1>
+        <img id="title" src="./buttonsSVG/MahjongButton.svg">
         <div id="menu">
-            <a id="createLobbyButton" href="/createLobby"><button class="menuButton">Create Lobby</button></a>
-            <a id="joinLobbyButton" href="/joinLobby"><button class="menuButton">Join Public Lobby</button></a>
-            <a id="joinPrivateLobbyButton" href="/joinPrivateLobby"><button class="menuButton">Join Private Lobby</button></a>
-            <a id="launchTutoButton" href="/game?tuto=true&playerName="><button class="menuButton">Tutorial</button></a>
-            <a id="creditsButton" href="/credits"><button class="menuButton">Credits</button></a>
+            <a id="createLobbyButton" href="/createLobby"><img class="menuButton" src="./buttonsSVG/CreateLobbyButton.svg"></a>
+            <a id="joinLobbyButton" href="/joinLobby"><img class="menuButton" src="./buttonsSVG/JoinPublicLobbyButton.svg"></a>
+            <a id="joinPrivateLobbyButton" href="/joinPrivateLobby"><img class="menuButton" src="./buttonsSVG/JoinPrivateLobbyButton.svg"></a>
+            <a id="launchTutoButton" href="/game?tuto=true&playerName="><img class="menuButton" src="./buttonsSVG/TutorialButton.svg"></a>
+            <a id="creditsButton" href="/credits"><img class="menuButton" src="./buttonsSVG/CreditsButton.svg"></a>
         </div>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script>
@@ -42,39 +42,4 @@
             }
         </script>
     </body>
-    <style>
-
-        #parametersIcon {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-        }
-
-        a{
-            color: black
-        }
-
-        #menu{
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            top: 50vh;
-            left: 50vw;
-            transform:translate(-50%, -50%);
-        }
-
-        .menuButton{
-            margin: 10px;
-            height: 7vh;
-            width: 20vw;
-        }
-
-        #title{
-            display: absolute;
-            text-align: center;
-            margin-top: 17vh;
-
-        }
-
-    </style>
 </html>
