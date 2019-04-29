@@ -169,7 +169,7 @@
             removeBotButtons[button].onclick = function () {
                 let Http = new XMLHttpRequest();
                 index = button;
-                let url = '/lobby?lobbyId=${lobby.getUUID()}&action=removePlayer&idPlayer=' + this.id + '&playerId=' + '${playerId}';
+                let url = '/lobby?lobbyId=${lobby.getUUID()}&action=removePlayer&playerNumber=' + this.id + '&playerId=' + '${playerId}';
                 console.log(url);
                 Http.open("POST", url, true);
                 Http.onreadystatechange = (e) => {

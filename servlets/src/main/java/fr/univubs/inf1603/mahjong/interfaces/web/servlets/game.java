@@ -182,7 +182,8 @@ public class game extends MahjongServlet {
             throws ServletException, IOException {
         SapiManager sapiManager = getSapiManager(request);
 
-        String tileZone = request.getParameter("tileZone");
+        String tileZoneName = request.getParameter("tileZone");
+
         String tilesId = request.getParameter("tilesId");
         String[] tilesIdArray = tilesId.split(",");
         List<Integer> tilesIdList = new ArrayList();
@@ -197,9 +198,96 @@ public class game extends MahjongServlet {
 
         try {
             HumanPlayer player = game.getPlayerFromHumanInLobby(getMyHuman(request, UUID.fromString(playerId)));
+            switch (player.getWind().toString()) {
+                case "SOUTH":
+                    switch (tileZoneName) {
+                        case "bottomMeld0":
+                            tileZoneName = "MeldSouth0";
+                            break;
+                        case "bottomMeld1":
+                            tileZoneName = "MeldSouth1";
+                            break;
+                        case "bottomMeld2":
+                            tileZoneName = "MeldSouth2";
+                            break;
+                        case "bottomMeld3":
+                            tileZoneName = "MeldSouth3";
+                            break;
+                        case "bottomHand":
+                            tileZoneName = "HandSouth";
+                            break;
+                        case "bottomDiscardArea":
+                            tileZoneName = "DiscardSouth";
+                            break;
+                    }
+                case "NORTH":
+                    switch (tileZoneName) {
+                        case "bottomMeld0":
+                            tileZoneName = "MeldNorth0";
+                            break;
+                        case "bottomMeld1":
+                            tileZoneName = "MeldNorth1";
+                            break;
+                        case "bottomMeld2":
+                            tileZoneName = "MeldNorth2";
+                            break;
+                        case "bottomMeld3":
+                            tileZoneName = "MeldNorth3";
+                            break;
+                        case "bottomHand":
+                            tileZoneName="HandNorth";
+                            break;
+                        case "bottomDiscardArea":
+                            tileZoneName="DiscardNorth";
+                            break;
+                    }
+                case "EAST":
+                    switch (tileZoneName) {
+                        case "bottomMeld0":
+                            tileZoneName = "MeldEast0";
+                            break;
+                        case "bottomMeld1":
+                            tileZoneName = "MeldEast1";
+                            break;
+                        case "bottomMeld2":
+                            tileZoneName = "MeldEast2";
+                            break;
+                        case "bottomMeld3":
+                            tileZoneName = "MeldEast3";
+                            break;
+                        case "bottomHand":
+                            tileZoneName="HandEast";
+                            break;
+                        case "bottomDiscardArea":
+                            tileZoneName="DiscardEast";
+                            break;
+                    }
+                case "WEST":
+                    switch (tileZoneName) {
+                        case "bottomMeld0":
+                            tileZoneName = "MeldWest0";
+                            break;
+                        case "bottomMeld1":
+                            tileZoneName = "MeldWest1";
+                            break;
+                        case "bottomMeld2":
+                            tileZoneName = "MeldWest2";
+                            break;
+                        case "bottomMeld3":
+                            tileZoneName = "MeldWest3";
+                            break;
+                        case "bottomHand":
+                            tileZoneName="HandWest";
+                            break;
+                        case "bottomDiscardArea":
+                            tileZoneName="DiscardWest";
+                            break;
+                    }
+            }
+
             List<SimpleMove> moves = player.getMoves();
             for (SimpleMove move : moves) {
-                if (equalsMoves(move, tilesIdList, tileZone)) {
+                if (equalsMoves(move, tilesIdList, tileZoneName)) {
                     player.choseMove(move);
                     response.setStatus(200);
                     return;
