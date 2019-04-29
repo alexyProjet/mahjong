@@ -10,20 +10,20 @@
 <head>
 	<title>Credits</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-	<link rel="stylesheet" href="../css/credits.css" >
+        <link rel="stylesheet" href="main.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 </head>
 <body>
 	<%@ include file="buttons.jsp" %>
 	<h1 id="title">Credits</h1>
 	<div id="credits">
-            <h2 id="team">-- DAO - Fichiers --</h2>
+            <h2 class="team">-- DAO - Fichiers --</h2>
 		<div class="authorName">Nesrine Hantat</div>
 		<div class="authorName">Aliyou Sylla</div>
-            <h2 id="team">-- DAO - SGBD --</h2>
+            <h2 class="team">-- DAO - SGBD --</h2>
 		<div class="authorName">Louis Allain</div>
 		<div class="authorName">Faroud Sadikou</div>
-            <h2 id="team">-- Engine --</h2>
+            <h2 class="team">-- Engine --</h2>
 		<div class="authorName">Charles Cogoluegnes</div>
 		<div class="authorName">Anton Cosnefroy</div>
 		<div class="authorName">Tristan Furno</div>
@@ -32,28 +32,28 @@
 		<div class="authorName">Samuel Le Berre</div>
 		<div class="authorName">Clément Mallejac</div>
 		<div class="authorName">Abdelilah Moulida</div>
-            <h2 id="team">-- IA --</h2>
+            <h2 class="team">-- IA --</h2>
 		<div class="authorName">Arthur Dembiermont</div>
 		<div class="authorName">Valentin Durand</div>
 		<div class="authorName">Maël Le Gal</div>
 		<div class="authorName">Vincent Maurice</div>
 		<div class="authorName">Guenole Thevenard</div>
-            <h2 id="team">-- Interface --</h2>
+            <h2 class="team">-- Interface --</h2>
 		<div class="authorName">Jules Audurier</div>
 		<div class="authorName">Allan Comisso</div>
 		<div class="authorName">Liam Cotte</div>
 		<div class="authorName">Alexy Duhamel</div>
 		<div class="authorName">Maxime Hamon</div>
 		<div class="authorName">Florent Simonet</div>
-            <h2 id="team">-- Réseau --</h2>
+            <h2 class="team">-- Réseau --</h2>
 		<div class="authorName">Alexandre Amouriq</div>
 		<div class="authorName">Mael Berrigaud</div>
 		<div class="authorName">Pierre Goujon</div>
-            <h2 id="team">-- SAPI --</h2>
+            <h2 class="team">-- SAPI --</h2>
 		<div class="authorName">Youri Bernard</div>
 		<div class="authorName">Johan Gousset</div>
 		<div class="authorName">Romann Yvinec</div>
-            <h2 id="team">-- Tutoriel --</h2>
+            <h2 class="team">-- Tutoriel --</h2>
 		<div class="authorName">Ewen Bouder</div>
 	</div>
 </body>
@@ -79,14 +79,18 @@ a{
 	margin-top: 17vh;
 }
 #credits{
-	position: absolute;
-	left: 44.5vw;
+	display: block;
+        margin-left: auto;
+        margin-right: auto;
 	text-align: center;
+        margin-bottom: 50px;
 }
-#team{
+.team{
 	text-align: center;
+        font-size: 2.5em;
 }
 .authorName{
 	text-align: center;
+        font-size: 2em;
 }
 </style>

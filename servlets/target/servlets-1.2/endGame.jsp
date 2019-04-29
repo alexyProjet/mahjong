@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Results</title>
+        <link rel="stylesheet" href="main.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     </head>
 

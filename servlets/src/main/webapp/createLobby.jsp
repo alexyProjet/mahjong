@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
               integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
+        <link rel="stylesheet" href="main.css">
         <!--<link rel="stylesheet" href="createlobby.css" type="text/css">-->
         <title>Lobby creation</title>
     </head>
