@@ -7,8 +7,13 @@ fr/univubs/inf1603/mahjong/interfaces/web/servlets/credits.class
 fr/univubs/inf1603/mahjong/interfaces/web/servlets/lobby.class
 fr/univubs/inf1603/mahjong/interfaces/web/servlets/setReady.class
 fr/univubs/inf1603/mahjong/interfaces/web/servlets/joinLobby.class
+<<<<<<< HEAD
+fr/univubs/inf1603/mahjong/interfaces/web/servlets/displayParameters.class
+fr/univubs/inf1603/mahjong/interfaces/web/servlets/accueil.class
+=======
 fr/univubs/inf1603/mahjong/interfaces/web/servlets/accueil.class
 fr/univubs/inf1603/mahjong/interfaces/web/servlets/displayParameters.class
+>>>>>>> e7372573dbd46d1d6d9e9c04e6ed73c4b1059970
 fr/univubs/inf1603/mahjong/interfaces/web/servlets/SimpleInitServlet.class
 fr/univubs/inf1603/mahjong/interfaces/web/servlets/createLobby.class
 fr/univubs/inf1603/mahjong/interfaces/web/servlets/createGame.class
