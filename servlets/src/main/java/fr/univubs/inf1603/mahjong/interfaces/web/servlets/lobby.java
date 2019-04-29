@@ -118,7 +118,7 @@ public class lobby extends MahjongServlet {
                     } else {
                     }
                 } else if ("removePlayer".equals(action)) {
-                    int idPlayer = Integer.parseInt(request.getParameter("idPlayer"));
+                    int idPlayer = Integer.parseInt(request.getParameter("playerNumber"));
                     lobby.removePlayer(lobby.getPlayers().get(idPlayer), humanInLobby);
                 } else if ("launchGame".equals(action)) {
                     String id = lobby.getUUID().toString();

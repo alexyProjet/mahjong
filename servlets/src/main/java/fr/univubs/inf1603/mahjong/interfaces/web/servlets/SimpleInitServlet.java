@@ -34,6 +34,7 @@ public class SimpleInitServlet extends GenericServlet {
         applicationServletContext.setAttribute("SapiManager", sapiManager);
         applicationServletContext.setAttribute("ownerMap", ownerMap);
         applicationServletContext.setAttribute("playerMap", playerMap);
+        System.out.println(sapiManager);
     }
 
     @Override

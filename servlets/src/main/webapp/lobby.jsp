@@ -43,7 +43,7 @@
             });
         </script>
 
-        <a href="/accueil"><i id="homeIcon" class="fas fa-sign-out-alt fa-5x"></i></a>
+        <i id="quitIcon" class="fas fa-sign-out-alt fa-5x"></i>
 
         <h1 id="title">${lobby.getName()}</h1>
         <h4>The Id of the Lobby :</h4> 
@@ -109,16 +109,31 @@
     </body>
 
     <script>
-         setTimeout(function () {
-         window.location.reload();
-         }, 4000);
-         
+        setTimeout(function () {
+            window.location.reload();
+        }, 4000);
+
         let addBotButtons = document.getElementsByClassName("addBotButton");
         let removeBotButtons = document.getElementsByClassName("removeBotButton");
         let difficulties = document.getElementsByClassName("difficulty");
         let launchButton = document.getElementById("launchGameButton");
         let readyButton = document.getElementById("readyButton");
         let visibilitySettings = document.getElementById("visibilitySettings");
+        let quitButton = document.getElementById("quitIcon");
+
+        quitButton.onclick = function () {
+            let Http = new XMLHttpRequest();
+            let url = '/lobby?action=quit&lobbyId=${lobby.getUUID()}&playerId=' + "${playerId}";
+            Http.open("POST", url, true);
+            Http.onreadystatechange = (e) => {
+                if (e == 200) {
+                    window.location.reload();
+                } else {
+                    alert('Problème');
+                }
+            };
+            Http.send();
+        }
 
         visibilitySettings.onchange = function () {
             let Http = new XMLHttpRequest();
@@ -169,7 +184,7 @@
             removeBotButtons[button].onclick = function () {
                 let Http = new XMLHttpRequest();
                 index = button;
-                let url = '/lobby?lobbyId=${lobby.getUUID()}&action=removePlayer&idPlayer=' + this.id + '&playerId=' + '${playerId}';
+                let url = '/lobby?lobbyId=${lobby.getUUID()}&action=removePlayer&playerNumber=' + this.id + '&playerId=' + '${playerId}';
                 console.log(url);
                 Http.open("POST", url, true);
                 Http.onreadystatechange = (e) => {
@@ -189,7 +204,7 @@
             color: black;
         }
 
-        #homeIcon {
+        #quitIcon {
             position: absolute;
             left: 10px;
             top: 10px;
