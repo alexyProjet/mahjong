@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Join a private lobby</title>
+        <link rel="stylesheet" href="main.css">
     </head>
     <body>
         <form id="joinForm" method="POST" action="/lobby">
