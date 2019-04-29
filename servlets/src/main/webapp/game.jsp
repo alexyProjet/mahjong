@@ -241,19 +241,19 @@
 
         <div id="leftPlayer">
             <div id="leftHand" class="hand">
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
             </div>
             <div id="leftMeldBlock">
                 <div id="leftMeld">
@@ -518,19 +518,19 @@
                 </div>
             </div>
             <div id="rightHand" class="hand">
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
-                <img class="rotateHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
+                <img class="tileHand tile" src="./tilesSVG/XX.svg" />
             </div>
 
         </div>

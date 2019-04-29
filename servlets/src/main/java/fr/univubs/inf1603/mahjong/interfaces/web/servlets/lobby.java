@@ -62,7 +62,7 @@ public class lobby extends MahjongServlet {
                 try {
                     nbReadyPlayers = 0;
                     players = lobby.getPlayers();
-                    for (int i = 0; i < lobby.getNumberOfPlayer(); i++) {
+                    for (int i = 0; i < lobby.getNumberOfPlayers(); i++) {
                         if (players.get(i) instanceof fr.univubs.inf1603.mahjong.sapi.impl.BotInLobbyImpl) {
                             nbReadyPlayers += 1;
                         } else if (getMyHuman(request, players.get(i).getUUID()).isReady() == true) {

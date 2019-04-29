@@ -102,70 +102,71 @@ public class game extends MahjongServlet {
 
             try {
                 if (ownerLobby.getUUID().toString().equals(playerId)) {
-                    HumanPlayer ownerGame = game.getPlayerFromPlayerInLobby(getMyHuman(request, UUID.fromString(playerId)));
+                    HumanPlayer ownerGame = game.getPlayerFromHumanInLobby(getMyHuman(request, UUID.fromString(playerId)));
                     game.launchGame(ownerGame);
                 }
-                Player player = game.getPlayerFromPlayerInLobby(getMyHuman(request, UUID.fromString(playerId)));
-                request.setAttribute("players", game.getPlayers());
+                if (game.isLaunch()) {
+                    Player player = game.getPlayerFromHumanInLobby(getMyHuman(request, UUID.fromString(playerId)));
+                    request.setAttribute("players", game.getPlayers());
 
-                BoardView board = game.getBoard(player);
-                request.setAttribute(gameId, board);
+                    BoardView board = game.getBoard(player);
+                    request.setAttribute(gameId, board);
 
-                //We define the common wall
-                request.setAttribute("wall", board.getWall());
+                    //We define the common wall
+                    request.setAttribute("wall", board.getWall());
 
-                //We define the attrributes of our player
-                request.setAttribute("myPlayer", player);
-                request.setAttribute("myHand", board.getHand(player.getWind()));
-                request.setAttribute("myWind", player.getWind());
+                    //We define the attrributes of our player
+                    request.setAttribute("myPlayer", player);
+                    request.setAttribute("myHand", board.getHand(player.getWind()));
+                    request.setAttribute("myWind", player.getWind());
 
-                //request.setAttribute("myPoints", game.getPlayerPoints(player));
-                request.setAttribute("myMeldZone0", board.getMeldZone0(player.getWind()));
-                request.setAttribute("myMeldZone1", board.getMeldZone1(player.getWind()));
-                request.setAttribute("myMeldZone2", board.getMeldZone2(player.getWind()));
-                request.setAttribute("myMeldZone3", board.getMeldZone3(player.getWind()));
-                request.setAttribute("myDiscardZone", board.getDiscardZone(player.getWind()));
-                request.setAttribute("mySupremeZone", board.getSupremeZone(player.getWind()));
-                request.setAttribute("myMoves", player.getMoves());
+                    //request.setAttribute("myPoints", game.getPlayerPoints(player));
+                    request.setAttribute("myMeldZone0", board.getMeldZone0(player.getWind()));
+                    request.setAttribute("myMeldZone1", board.getMeldZone1(player.getWind()));
+                    request.setAttribute("myMeldZone2", board.getMeldZone2(player.getWind()));
+                    request.setAttribute("myMeldZone3", board.getMeldZone3(player.getWind()));
+                    request.setAttribute("myDiscardZone", board.getDiscardZone(player.getWind()));
+                    request.setAttribute("mySupremeZone", board.getSupremeZone(player.getWind()));
+                    request.setAttribute("myMoves", player.getMoves());
 
-                //We define the attribute of east wind
-                System.out.println(board.getMeldZone0(Wind.WEST));
-                request.setAttribute("meldZoneEast0", board.getMeldZone0(Wind.EAST));
-                request.setAttribute("meldZoneEast1", board.getMeldZone0(Wind.EAST));
-                request.setAttribute("meldZoneEast2", board.getMeldZone2(Wind.EAST));
-                request.setAttribute("meldZoneEast3", board.getMeldZone3(Wind.EAST));
-                request.setAttribute("discardZoneEast", board.getDiscardZone(Wind.EAST));
-                request.setAttribute("supremeZoneEast", board.getSupremeZone(Wind.EAST));
+                    //We define the attribute of east wind
+                    request.setAttribute("meldZoneEast0", board.getMeldZone0(Wind.EAST));
+                    request.setAttribute("meldZoneEast1", board.getMeldZone0(Wind.EAST));
+                    request.setAttribute("meldZoneEast2", board.getMeldZone2(Wind.EAST));
+                    request.setAttribute("meldZoneEast3", board.getMeldZone3(Wind.EAST));
+                    request.setAttribute("discardZoneEast", board.getDiscardZone(Wind.EAST));
+                    request.setAttribute("supremeZoneEast", board.getSupremeZone(Wind.EAST));
 
-                //We define the attribute of west wind
-                request.setAttribute("meldZoneWest0", board.getMeldZone0(Wind.WEST));
-                request.setAttribute("meldZoneWest1", board.getMeldZone0(Wind.WEST));
-                request.setAttribute("meldZoneWest2", board.getMeldZone2(Wind.WEST));
-                request.setAttribute("meldZoneWest3", board.getMeldZone3(Wind.WEST));
-                request.setAttribute("discardZoneWest", board.getDiscardZone(Wind.WEST));
-                request.setAttribute("supremeZoneWest", board.getSupremeZone(Wind.WEST));
+                    //We define the attribute of west wind
+                    request.setAttribute("meldZoneWest0", board.getMeldZone0(Wind.WEST));
+                    request.setAttribute("meldZoneWest1", board.getMeldZone0(Wind.WEST));
+                    request.setAttribute("meldZoneWest2", board.getMeldZone2(Wind.WEST));
+                    request.setAttribute("meldZoneWest3", board.getMeldZone3(Wind.WEST));
+                    request.setAttribute("discardZoneWest", board.getDiscardZone(Wind.WEST));
+                    request.setAttribute("supremeZoneWest", board.getSupremeZone(Wind.WEST));
 
-                //We define the attribute of south wind
-                request.setAttribute("meldZoneSouth0", board.getMeldZone0(Wind.SOUTH));
-                request.setAttribute("meldZoneSouth1", board.getMeldZone0(Wind.SOUTH));
-                request.setAttribute("meldZoneSouth2", board.getMeldZone2(Wind.SOUTH));
-                request.setAttribute("meldZoneSouth3", board.getMeldZone3(Wind.SOUTH));
-                request.setAttribute("discardZoneSouth", board.getDiscardZone(Wind.SOUTH));
-                request.setAttribute("supremeZoneSouth", board.getSupremeZone(Wind.SOUTH));
+                    //We define the attribute of south wind
+                    request.setAttribute("meldZoneSouth0", board.getMeldZone0(Wind.SOUTH));
+                    request.setAttribute("meldZoneSouth1", board.getMeldZone0(Wind.SOUTH));
+                    request.setAttribute("meldZoneSouth2", board.getMeldZone2(Wind.SOUTH));
+                    request.setAttribute("meldZoneSouth3", board.getMeldZone3(Wind.SOUTH));
+                    request.setAttribute("discardZoneSouth", board.getDiscardZone(Wind.SOUTH));
+                    request.setAttribute("supremeZoneSouth", board.getSupremeZone(Wind.SOUTH));
 
-                //We define the attribute of north wind
-                request.setAttribute("meldZoneNorth0", board.getMeldZone0(Wind.NORTH));
-                request.setAttribute("meldZoneNorth1", board.getMeldZone0(Wind.NORTH));
-                request.setAttribute("meldZoneNorth2", board.getMeldZone2(Wind.NORTH));
-                request.setAttribute("meldZoneNorth3", board.getMeldZone3(Wind.NORTH));
-                request.setAttribute("discardZoneNorth", board.getDiscardZone(Wind.NORTH));
-                request.setAttribute("supremeZoneNorth", board.getSupremeZone(Wind.NORTH));
-
+                    //We define the attribute of north wind
+                    request.setAttribute("meldZoneNorth0", board.getMeldZone0(Wind.NORTH));
+                    request.setAttribute("meldZoneNorth1", board.getMeldZone0(Wind.NORTH));
+                    request.setAttribute("meldZoneNorth2", board.getMeldZone2(Wind.NORTH));
+                    request.setAttribute("meldZoneNorth3", board.getMeldZone3(Wind.NORTH));
+                    request.setAttribute("discardZoneNorth", board.getDiscardZone(Wind.NORTH));
+                    request.setAttribute("supremeZoneNorth", board.getSupremeZone(Wind.NORTH));
+                }
             } catch (DestroyedGameException | PlayerNotInGameException ex) {
                 Logger.getLogger(game.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         this.getServletContext().getRequestDispatcher("/game.jsp").forward(request, response);
+
     }
 
     /**
@@ -185,7 +186,7 @@ public class game extends MahjongServlet {
         String tilesId = request.getParameter("tilesId");
         String[] tilesIdArray = tilesId.split(",");
         List<Integer> tilesIdList = new ArrayList();
-        
+
         for (String tileIdString : tilesIdArray) {
             tilesIdList.add(Integer.parseInt(tileIdString));
         }
@@ -195,10 +196,10 @@ public class game extends MahjongServlet {
         SimpleGame game = sapiManager.getGame(UUID.fromString(gameId));
 
         try {
-            HumanPlayer player = game.getPlayerFromPlayerInLobby(getMyHuman(request, UUID.fromString(playerId)));
+            HumanPlayer player = game.getPlayerFromHumanInLobby(getMyHuman(request, UUID.fromString(playerId)));
             List<SimpleMove> moves = player.getMoves();
             for (SimpleMove move : moves) {
-                if(equalsMoves(move, tilesIdList, tileZone)){
+                if (equalsMoves(move, tilesIdList, tileZone)) {
                     player.choseMove(move);
                     response.setStatus(200);
                     return;

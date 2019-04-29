@@ -58,7 +58,7 @@
                     <div id="player2">
                         ${lobby.getPlayers()[1]!=null && playerId.equals(lobby.getOwner().getUUID().toString())? "<button id='1' class='removeBotButton'>X</button>" :"" }
                         <input class="playerName" type="text" name="player2" value="${lobby.getPlayers()[1].getName()}" disabled>
-                        ${lobby.getNumberOfPlayer()==1 && playerId.equals(lobby.getOwner().getUUID().toString()) ? '<button class="addBotButton">Add a bot</button>
+                        ${lobby.getNumberOfPlayers()==1 && playerId.equals(lobby.getOwner().getUUID().toString()) ? '<button class="addBotButton">Add a bot</button>
                           <select id="botDifficulty" class="difficultyBot">
                           <option>SILLY</option>
                           <option>EASY</option>                              
@@ -67,7 +67,7 @@
                     <div id="player3">
                         ${lobby.getPlayers()[2]!=null && playerId.equals(lobby.getOwner().getUUID().toString()) ? "<button id='2' class=removeBotButton>X</button>" :"" }
                         <input class="playerName" type="text" name="player3" value="${lobby.getPlayers()[2].getName()}" disabled>
-                        ${lobby.getNumberOfPlayer()==2 && playerId.equals(lobby.getOwner().getUUID().toString())? '<button class="addBotButton">Add a bot</button>
+                        ${lobby.getNumberOfPlayers()==2 && playerId.equals(lobby.getOwner().getUUID().toString())? '<button class="addBotButton">Add a bot</button>
                           <select id="botDifficulty" class="difficultyBot">
                           <option>SILLY</option>
                           <option>EASY</option>                          
@@ -76,7 +76,7 @@
                     <div id="player4">
                         ${lobby.getPlayers()[3]!=null && playerId.equals(lobby.getOwner().getUUID().toString())? "<button id='3' class=removeBotButton>X</button>" :"" }
                         <input class="playerName" type="text" name="player3" value="${lobby.getPlayers()[3].getName()}" disabled>
-                        ${lobby.getNumberOfPlayer()==3 && playerId.equals(lobby.getOwner().getUUID().toString()) ? '<button class="addBotButton">Add a bot</button>
+                        ${lobby.getNumberOfPlayers()==3 && playerId.equals(lobby.getOwner().getUUID().toString()) ? '<button class="addBotButton">Add a bot</button>
                           <select id="botDifficulty" class="difficultyBot">
                           <option>SILLY</option>
                           <option>EASY</option>     
@@ -102,8 +102,8 @@
             </div>
             <div id="centerButton">
                 <p>${ownerUUID}</p>
-                <a id="launchGameButton"><button ${lobby.getNumberOfPlayer()==4 && playerId.equals(lobby.getOwner().getUUID().toString()) && nbReadyPlayers==4 ? "" : "disabled"} id="launchButton">Launch</button></a>
-                <button id="readyButton">Ready (${nbReadyPlayers}/${lobby.getNumberOfPlayer()})</button>
+                <a id="launchGameButton"><button ${lobby.getNumberOfPlayers()==4 && playerId.equals(lobby.getOwner().getUUID().toString()) && nbReadyPlayers==4 ? "" : "disabled"} id="launchButton">Launch</button></a>
+                <button id="readyButton">Ready (${nbReadyPlayers}/${lobby.getNumberOfPlayers()})</button>
             </div>
         </div>
     </body>
