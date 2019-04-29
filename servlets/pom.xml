@@ -9,7 +9,7 @@
 
     <groupId>fr.univubs.inf1603.mahjong.interfaces.web</groupId>
     <artifactId>servlets</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
     <packaging>war</packaging>
 
     <name>servlets</name>

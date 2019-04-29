@@ -23,7 +23,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
  * @author aster
  */
 public class createLobby extends MahjongServlet {
@@ -55,18 +54,16 @@ public class createLobby extends MahjongServlet {
             request.setAttribute("visibility", visibility);
         }
 
-         if (sapiManager.getRules().contains(rule)) {
+        if (sapiManager.getRules().contains(rule)) {
             request.setAttribute("selectedRule", rule);
         }
-
-
 
         if (playTime != null & stealTime != null) {
             request.setAttribute("time", stealTime);
             request.setAttribute("pickTime", stealTime);
         }
-        
-         request.setAttribute("rules",sapiManager.getRules());
+
+        request.setAttribute("rules", sapiManager.getRules());
         this.getServletContext().getRequestDispatcher("/createLobby.jsp").forward(request, response);
     }
 
@@ -93,19 +90,25 @@ public class createLobby extends MahjongServlet {
         HumanInLobby ownerLobby = null;
         Writer writer = response.getWriter();
 
-        if (playerName != null & name != null & (visibility != null & ("Private".equals(visibility) | "Public".equals(visibility))) & (rule != null & ("Traditionnal".equals(rule))) & (stringPlayTime != null & stringStealTime != null)) {
+        if (playerName != null & name != null & (visibility != null & ("Private".equals(visibility) | "Public".equals(visibility))) & (rule != null & ("Traditionnal".equals(rule)) || "Silly".equals(rule)) & (stringPlayTime != null & stringStealTime != null)) {
             int stealTime = Integer.parseInt(stringStealTime);
             int playTime = Integer.parseInt(stringPlayTime);
             try {
                 ownerLobby = sapiManager.createHumanInLobby(playerName);
                 this.getServletContext().setAttribute("ownerLobby", ownerLobby);
                 this.getServletContext().setAttribute("myPlayer", ownerLobby);
-                SimpleRule simpleRule = sapiManager.getRules().get(0);
+                SimpleRule simpleRule;
+                if ("Silly".equals(rule)) {
+                    simpleRule = sapiManager.getRules().get(0);
+                } else {
+                    simpleRule = sapiManager.getRules().get(1);
+                }
                 Boolean visible = "Public".equals(visibility);
                 lobby = sapiManager.createLobby(name, ownerLobby, simpleRule, visible, stealTime, playTime, Difficulty.SILLY);
+
                 try {
-                    setOwner(request,ownerLobby, lobby.getUUID());
-                    setHuman(request,ownerLobby, ownerLobby.getUUID());
+                    setOwner(request, ownerLobby, lobby.getUUID());
+                    setHuman(request, ownerLobby, ownerLobby.getUUID());
                 } catch (DestroyedLobbyException ex) {
                     Logger.getLogger(createLobby.class.getName()).log(Level.SEVERE, null, ex);
                 }
