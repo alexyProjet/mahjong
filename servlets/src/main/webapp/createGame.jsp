@@ -17,7 +17,7 @@
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <!--<link rel="stylesheet" href="createlobby.css" type="text/css">-->
-        <title>Wireframe of createLobbby</title>
+        <title>Lobby creation</title>
     </head>
 
     <body>

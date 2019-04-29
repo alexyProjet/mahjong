@@ -16,7 +16,7 @@
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
                 <script src="jquery.wait.js"></script>
-        <title>Maquette de la partie</title>
+        <title>Mahjong</title>
     </head>
 
     <body>
